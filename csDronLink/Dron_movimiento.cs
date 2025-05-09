@@ -12,7 +12,7 @@ namespace csDronLink
     {
 
         // Movimiento
-        public void _Mover(string direccion, int distancia, Action<object> f = null, object param = null)
+        public void _Mover(string direccion, int distancia, Action<byte, object> f = null, object param = null)
         {
             // paro el bucle de navegación si es necesario
             // Las operaciones de movimiento indican la distancia. No es necesario recordarle al autopiloto
@@ -90,7 +90,7 @@ namespace csDronLink
             // Crear el mensaje de movimiento en coordenadas NED (Norte-Este-Abajo)
             MAVLink.mavlink_set_position_target_local_ned_t moveCmd = new MAVLink.mavlink_set_position_target_local_ned_t
             {
-                target_system = 1,
+                target_system = this.id,
                 target_component = 1,
                 coordinate_frame = (byte)MAVLink.MAV_FRAME.BODY_OFFSET_NED, // Sistema de coordenadas local NED
                 type_mask = 0b_0000110111111000,
@@ -126,11 +126,11 @@ namespace csDronLink
             );
 
             if (f != null)
-                f(param);
+                f(this.id, param);
 
 
         }
-        public void Mover(string direccion, int distancia, Boolean bloquear = true, Action<object> f = null, object param = null)
+        public void Mover(string direccion, int distancia, Boolean bloquear = true, Action<byte,object> f = null, object param = null)
         {
             if (bloquear)
             {
@@ -143,13 +143,13 @@ namespace csDronLink
             }
         }
 
-        private void _IrAlPunto(float lat, float lon, float alt, Action<object> f = null, object param = null)
+        private void _IrAlPunto(float lat, float lon, float alt, Action<byte,object> f = null, object param = null)
         {
             // Paramos el bucle de navegación (por si estuviera en marcha)
             this.navegando = false;
             var msg = new MAVLink.mavlink_set_position_target_global_int_t
             {
-                target_system = 1, // ID del dron
+                target_system = this.id, // ID del dron
                 target_component = 1, // Componente (generalmente 1)
                 coordinate_frame = (byte)MAV_FRAME.GLOBAL_RELATIVE_ALT_INT,
                 type_mask = (ushort)(
@@ -188,9 +188,9 @@ namespace csDronLink
             );
 
             if (f != null)
-                f(param);
+                f(this.id, param);
         }
-        public void IrAlPunto(float lat, float lon, float alt, Boolean bloquear = true, Action<object> f = null, object param = null)
+        public void IrAlPunto(float lat, float lon, float alt, Boolean bloquear = true, Action<byte,object> f = null, object param = null)
         {
             if (bloquear)
             {

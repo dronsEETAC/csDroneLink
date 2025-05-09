@@ -17,7 +17,7 @@ namespace csDronLink
             // Enviar comando para borrar todas las misiones del autopiloto
             MAVLink.mavlink_mission_clear_all_t clearMission = new MAVLink.mavlink_mission_clear_all_t
             {
-                target_system = 1,
+                target_system = this.id,
                 target_component = 1
             };
             byte[] packet = mavlink.GenerateMAVLinkPacket10(MAVLink.MAVLINK_MSG_ID.MISSION_COUNT, clearMission);
@@ -35,7 +35,7 @@ namespace csDronLink
             {
                 wploader.Add(new MAVLink.mavlink_mission_item_int_t()
                 {
-                    target_system = 1,
+                    target_system = this.id,
                     target_component = 1,
                     seq = (ushort)seq,
                     frame = (byte)MAVLink.MAV_FRAME.GLOBAL_RELATIVE_ALT,
@@ -53,7 +53,7 @@ namespace csDronLink
             // Envio el número total de waypoints
             var countMsg = new MAVLink.mavlink_mission_count_t
             {
-                target_system = 1,
+                target_system = this.id,
                 target_component = 1,
                 count = (ushort)mision.Count,
                 mission_type = (byte)MAVLink.MAV_MISSION_TYPE.MISSION
@@ -86,12 +86,12 @@ namespace csDronLink
 
 
         }
-        private void _EjecutarMision(Action<object> EnWaypoint = null, Action<object> f = null, object param = null)
+        private void _EjecutarMision(Action<byte,object> EnWaypoint = null, Action<byte,object> f = null, object param = null)
         {
             // Enviar solicitud de número de waypoints
             MAVLink.mavlink_mission_request_list_t requestList = new MAVLink.mavlink_mission_request_list_t
             {
-                target_system = 1,
+                target_system = this.id,
                 target_component = 1
             };
             // Enviar el comando al autopiloto
@@ -110,7 +110,7 @@ namespace csDronLink
             // Doy la orden de iniciar la misión
             MAVLink.mavlink_command_long_t cmd = new MAVLink.mavlink_command_long_t
             {
-                target_system = 1,
+                target_system = this.id,
                 target_component = 1,
                 command = (ushort)MAVLink.MAV_CMD.MISSION_START,
                 confirmation = 0,
@@ -133,13 +133,13 @@ namespace csDronLink
                 );
                 // Llamo a la función que me piden, pasandole el índice del waypoint alcanzado
                 if (EnWaypoint != null)
-                    EnWaypoint(i);
+                    EnWaypoint(this.id, i);
             }
             PonModoGuiado();
             if (f != null)
-                f(param);
+                f(this.id, param);
         }
-        public void EjecutarMision(Boolean bloquear = true, Action<object> EnWaypoint = null, Action<object> f = null, object param = null)
+        public void EjecutarMision(Boolean bloquear = true, Action<byte,object> EnWaypoint = null, Action<byte,object> f = null, object param = null)
         {
             // EnWaypointy es la función que se activará cada vez que se alcance uno de los waypoints,
             // pasándole como parámetro el índice del waypoint alcanzado

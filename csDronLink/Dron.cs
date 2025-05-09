@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static MAVLink;
+
 using System.Threading;
 using System.Collections.Concurrent;
 using System.Net.Sockets;
@@ -27,6 +28,10 @@ namespace csDronLink
     public partial class Dron
     {
         // Atributos
+        byte id; // identificador del dron (un número a partir del 1)
+        // El identificador del dron es necesario cuando se trabaja con un enjambre de drones
+        // simulado
+
         MAVLink.MavlinkParse mavlink = new MAVLink.MavlinkParse();
         // El modo puede ser "simulacion" o "produccion"
         string modo;
@@ -50,7 +55,7 @@ namespace csDronLink
 
         // Aquí guardaré la referencia a la función que tengo que ejecutar
         // si el cliente me pide que le envíe los datos de telemetría.
-        Action<List<(string nombre, float valor)>> ProcesarTelemetria = null;
+        Action<byte, List<(string nombre, float valor)>> ProcesarTelemetria = null;
 
         // Cuando reciba un comando de navegación debo poner en marcha el 
         // bucle de navegación para que recuerde al autopiloto que mantenga
@@ -63,9 +68,12 @@ namespace csDronLink
         MessageHandler messageHandler;
 
         // Constrictor, conexión, registro de telemetria y envio de mensajes
-        public Dron()
+        public Dron(byte id = 1)
         {
+            // Al crear la dron se establece su identificador (1 por defecto)
+            this.id = id;
         }
+      
         private void EnviarMensaje (byte[] packet)
         {
             if (modo == "produccion")
@@ -92,7 +100,8 @@ namespace csDronLink
                 telemetria.Add(("Lon",this.lon));
                 telemetria.Add(("Heading",this.heading));
                 // Los envío a la función que me indicó el cliente
-                this.ProcesarTelemetria(telemetria);
+                // Envio también el identificador del dron
+                this.ProcesarTelemetria(this.id, telemetria);
             }
         }
         public void Conectar(string modo, string conector = null)
@@ -109,9 +118,12 @@ namespace csDronLink
             } else
             {
                 // Configuro la conexión con el simulador
-                // ESTO HABRÁ QUE CAMBIARLO PORQUE PUEDE QUE EL CLIENTE QUIERA CONECTARSE A OTROS PUERTOS
                 string ip = "127.0.0.1";
-                int port = 5763;
+                // El puerto depende del identificador:
+                // 1 -> 5763
+                // 2 -> 5773
+                // id -> 5763 + (id-1)*10
+                int port = 5763 + (this.id - 1) * 10;
                 TcpClient client = new TcpClient(ip, port);
                 puertoTCP = client.GetStream();
                 messageHandler = new MessageHandler(modo, puertoTCP);
@@ -129,7 +141,7 @@ namespace csDronLink
             // los datos de telemetría, cada 2 segundos)
             MAVLink.mavlink_command_long_t req = new MAVLink.mavlink_command_long_t
             {
-                target_system = 1,
+                target_system = this.id,
                 target_component = 1,
                 command = (ushort)MAVLink.MAV_CMD.SET_MESSAGE_INTERVAL,
                 param1 = (float)MAVLink.MAVLINK_MSG_ID.GLOBAL_POSITION_INT, // ID del mensaje que queremos recibir
@@ -138,6 +150,7 @@ namespace csDronLink
 
             byte[] packet = mavlink.GenerateMAVLinkPacket10(MAVLink.MAVLINK_MSG_ID.COMMAND_LONG, req);
             EnviarMensaje(packet);
+            Console.WriteLine("Enviado el mensaje de conexion");
         }
 
 

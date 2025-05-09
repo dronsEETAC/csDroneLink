@@ -35,7 +35,7 @@ namespace csDronLink
                 // Crear la solicitud para obtener el valor del parámetro RTL_ALT
                 MAVLink.mavlink_param_request_read_t req = new MAVLink.mavlink_param_request_read_t
                 {
-                    target_system = 1,  // ID del sistema (1 es el sistema principal)
+                    target_system = this.id,  // ID del sistema (1 es el sistema principal)
                     target_component = 1,  // ID del componente (1 es el autopiloto)
                     param_index = -1,  // Índice del parámetro (no se usa para leer por nombre)
                     param_id = paramIdBytes,  // El parámetro debe ser un arreglo de bytes de longitud fija
@@ -80,7 +80,7 @@ namespace csDronLink
                 // Crear la solicitud para establecer el valor del parámetro 
                 MAVLink.mavlink_param_set_t peticion = new MAVLink.mavlink_param_set_t
                 {
-                    target_system = 1,      // ID del sistema (1 es el sistema principal)
+                    target_system = this.id,      // ID del sistema (1 es el sistema principal)
                     target_component = 1,   // ID del componente (1 es el autopiloto)
                     param_value = valor,  // Nuevo valor del parámetro 
                     param_id = paramIdBytes,    // Nombre del parámetro en un array de bytes

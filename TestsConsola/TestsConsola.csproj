@@ -35,7 +35,7 @@
   <ItemGroup>
     <Reference Include="csDronLink, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\csDronLink.dll</HintPath>
+      <HintPath>..\csDronLink\bin\Debug\csDronLink.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

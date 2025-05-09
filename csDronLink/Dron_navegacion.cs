@@ -92,7 +92,7 @@ namespace csDronLink
             // Crear el mensaje SET_POSITION_TARGET_LOCAL_NED para navegar en la dirección indicada
             MAVLink.mavlink_set_position_target_local_ned_t moveCmd = new MAVLink.mavlink_set_position_target_local_ned_t
             {
-                target_system = 1,        // ID del sistema (autopiloto)
+                target_system = this.id,        // ID del sistema (autopiloto)
                 target_component = 1,     // ID del componente (controlador de vuelo)
                 coordinate_frame = (byte)MAVLink.MAV_FRAME.LOCAL_NED,  // Sistema de coordenadas local NED
                 type_mask = 0b_0000111111000111, // Ignorar posición, usar velocidad
