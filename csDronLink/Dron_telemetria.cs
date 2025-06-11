@@ -9,7 +9,7 @@ namespace csDronLink
     public partial class Dron
     {
         // Telemetria
-        public void EnviarDatosTelemetria(Action<List<(string nombre, float valor)>> f)
+        public void EnviarDatosTelemetria( Action<byte, List<(string nombre, float valor)>> f)
         {
             // El cliente me pide que ejecute la función f cada vez que reciba un mensaje
             // con datos de telemetría

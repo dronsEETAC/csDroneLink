@@ -15,7 +15,7 @@ namespace csDronLink
             // Primero ponemos el dron en modo GUIDED
             MAVLink.mavlink_set_mode_t setMode = new MAVLink.mavlink_set_mode_t
             {
-                target_system = 1,
+                target_system = this.id,
                 base_mode = (byte)MAVLink.MAV_MODE_FLAG.CUSTOM_MODE_ENABLED,
                 custom_mode = 4 // GUIDED Mode en ArduPilot
             };
@@ -28,7 +28,7 @@ namespace csDronLink
             this.velocidad = velocidad;
             // Crear el mensaje COMMAND_LONG
             MAVLink.mavlink_command_long_t speedCommand = new MAVLink.mavlink_command_long_t();
-            speedCommand.target_system = 1;      // ID del sistema (drone)
+            speedCommand.target_system = this.id;      // ID del sistema (drone)
             speedCommand.target_component = 1; // ID del componente
             speedCommand.command = (ushort)MAVLink.MAV_CMD.DO_CHANGE_SPEED;
             speedCommand.param1 = 1;   // Tipo de velocidad (1 = Aérea, 0 = Terrestre, 2 = Vertical)
@@ -46,12 +46,13 @@ namespace csDronLink
             EnviarMensaje(packet);
 
         }
-        public void _CambiarHeading(float nuevoHeading, Action<object> f = null, object param = null)
+        public void _CambiarHeading(float nuevoHeading, Action<byte,object> f = null, object param = null)
         {
-
+            // paro el bucle de navegación, si es que está activo
+            this.navegando = false;
             var req = new MAVLink.mavlink_command_long_t
             {
-                target_system = 1,       // ID del dron
+                target_system = this.id,       // ID del dron
                 target_component = 1, // ID del componente (normalmente autopiloto)
                 command = (ushort)MAVLink.MAV_CMD.CONDITION_YAW,
                 param1 = nuevoHeading,  // Ángulo de heading (en grados)
@@ -78,9 +79,9 @@ namespace csDronLink
             );
 
             if (f != null)
-                f(param);
+                f(this.id, param);
         }
-        public void CambiarHeading(float nuevoHeading, Boolean bloquear = true, Action<object> f = null, object param = null)
+        public void CambiarHeading(float nuevoHeading, Boolean bloquear = true, Action<byte,object> f = null, object param = null)
         {
             if (bloquear)
             {

@@ -10,14 +10,14 @@ namespace csDronLink
     public partial class Dron
     {
         // Despegue, aterrizaje y RTL
-        private void _Despegar(int altitud, Action<object> f = null, object param = null)
+        private void _Despegar(int altitud, Action<byte, object> f = null, object param = null)
         {
             // Primero ponemos el dron en modo GUIDED
             PonModoGuiado();
 
             // Despues armamos armamos
             MAVLink.mavlink_command_long_t req = new MAVLink.mavlink_command_long_t();
-            req.target_system = 1;
+            req.target_system = this.id;
             req.target_component = 1;
             req.command = (ushort)MAVLink.MAV_CMD.COMPONENT_ARM_DISARM;
             req.param1 = 1;
@@ -27,7 +27,7 @@ namespace csDronLink
             // Y ahora despegamos
             req = new MAVLink.mavlink_command_long_t
             {
-                target_system = 1,
+                target_system = this.id,
                 target_component = 1,
                 command = (ushort)MAVLink.MAV_CMD.TAKEOFF,
                 param7 = altitud // Altura deseada en metros
@@ -47,10 +47,10 @@ namespace csDronLink
                 timeout: -1
             );
             if (f != null)
-                f(param);
+                f(this.id, param);
 
         }
-        public void Despegar(int altitud, Boolean bloquear = true, Action<object> f = null, object param = null)
+        public void Despegar(int altitud, Boolean bloquear = true, Action<byte,object> f = null, object param = null)
         {
             // Si la llamada es bloqueante llamo a la función 
             if (bloquear)
@@ -65,14 +65,14 @@ namespace csDronLink
             }
 
         }
-        public void _RTL(Action<object> f = null, object param = null)
+        public void _RTL(Action<byte, object> f = null, object param = null)
         {
             // paro el bucle de navegación si está activo
             this.navegando = false;
 
             MAVLink.mavlink_set_mode_t setMode = new MAVLink.mavlink_set_mode_t
             {
-                target_system = 1,
+                target_system = this.id,
                 base_mode = (byte)MAVLink.MAV_MODE_FLAG.CUSTOM_MODE_ENABLED,
                 custom_mode = 6 // Modo RTL en ArduPilot
             };
@@ -91,10 +91,10 @@ namespace csDronLink
             );
 
             if (f != null)
-                f(param);
+                f(this.id, param);
 
         }
-        public void _Aterrizar(Action<object> f = null, object param = null)
+        public void _Aterrizar(Action<byte, object> f = null, object param = null)
         {
             // paro el bucle de navegación si está activo
             this.navegando = false;
@@ -102,7 +102,7 @@ namespace csDronLink
             // Crear el paquete para el comando de aterrizaje
             MAVLink.mavlink_command_long_t req = new MAVLink.mavlink_command_long_t
             {
-                target_system = 1,  // ID del sistema (1 es el sistema principal)
+                target_system = this.id,  // ID del sistema (1 es el sistema principal)
                 target_component = 1,  // ID del componente (1 es el autopiloto)
                 command = (ushort)MAVLink.MAV_CMD.LAND,  // Comando de aterrizaje
                 param1 = 0,  // No se usa (0 es valor por defecto)
@@ -129,10 +129,10 @@ namespace csDronLink
 
 
             if (f != null)
-                f(param);
+                f(this.id,param);
 
         }
-        public void RTL(Boolean bloquear = true, Action<object> f = null, object param = null)
+        public void RTL(Boolean bloquear = true, Action<byte,object> f = null, object param = null)
         {
             if (bloquear)
             {
@@ -144,7 +144,7 @@ namespace csDronLink
                 t.Start();
             }
         }
-        public void Aterrizar(Boolean bloquear = true, Action<object> f = null, object param = null)
+        public void Aterrizar(Boolean bloquear = true, Action<byte,object> f = null, object param = null)
         {
             if (bloquear)
             {

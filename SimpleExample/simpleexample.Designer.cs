@@ -72,7 +72,6 @@
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.headLbl = new System.Windows.Forms.Label();
-            this.otraLbl = new System.Windows.Forms.Label();
             this.longitudLbl = new System.Windows.Forms.Label();
             this.latitudLbl = new System.Windows.Forms.Label();
             this.altitudLbl = new System.Windows.Forms.Label();
@@ -92,6 +91,7 @@
             this.ponGuiadoBtn = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).BeginInit();
@@ -584,8 +584,8 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.label7);
             this.groupBox4.Controls.Add(this.headLbl);
-            this.groupBox4.Controls.Add(this.otraLbl);
             this.groupBox4.Controls.Add(this.longitudLbl);
             this.groupBox4.Controls.Add(this.latitudLbl);
             this.groupBox4.Controls.Add(this.altitudLbl);
@@ -609,15 +609,6 @@
             this.headLbl.Name = "headLbl";
             this.headLbl.Size = new System.Drawing.Size(63, 30);
             this.headLbl.TabIndex = 10;
-            // 
-            // otraLbl
-            // 
-            this.otraLbl.AutoSize = true;
-            this.otraLbl.Location = new System.Drawing.Point(0, 0);
-            this.otraLbl.Name = "otraLbl";
-            this.otraLbl.Size = new System.Drawing.Size(69, 20);
-            this.otraLbl.TabIndex = 9;
-            this.otraLbl.Text = "Heading";
             // 
             // longitudLbl
             // 
@@ -811,6 +802,15 @@
             this.label10.TabIndex = 30;
             this.label10.Text = "Distancia";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(137, 95);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(69, 20);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "Heading";
+            // 
             // simpleexample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -913,7 +913,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem parámetrosToolStripMenuItem;
         private System.Windows.Forms.Label headLbl;
-        private System.Windows.Forms.Label otraLbl;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.RadioButton prodRadio;
@@ -921,6 +920,7 @@
         private System.Windows.Forms.Button ponGuiadoBtn;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label7;
     }
 }
 

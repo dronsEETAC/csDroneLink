@@ -3,8 +3,9 @@
 La librería csDronLink es una versión de la librería dronLink para aplicaciones en C#. El modelo de programación es el mismo que el 
 de dronLink, aunque el nombre de las funciones es distinto y en algunos casos los parámetros también.    
      
-Este repositorio contiene 3 carpetas:    
-* *csDronLink*, que contiene el código de la librería.     
+Este repositorio contiene 4 carpetas:    
+* *csDronLink*, que contiene el código de la librería.
+* *docs*, que contiene la descripcion de los métodos disponibles en la versión actual  
 * *SimpleExample*, que contiene una aplicación de formularios (no tan simple) que usa muchas de las funciones de la librería.     
 * *TestConsola*, con una colección de funciones de test para probar muchas de las funciones de la librería. Mirar ese código es la mejor forma de ver cómo usar las funciones de la librería.
      
@@ -108,13 +109,13 @@ procesando los datos de telemetría mientras el dron se mueve, para mostrar al u
 ejemplo, la posición del dron en el mapa.     
    
  ## 3. Videos explicativos
- En este video se explica cómo está organizada la librería (cosa que puede ser útil para el desarrollador de código para librería) y se muestran en funcionamiento los programas de test (esto será útil para el usuario de la librería). [![DroneEngineeringEcosystem Badge](https://img.shields.io/badge/DEE-csDronLink_organización-pink.svg)](https://www.youtube.com/playlist?list=PLyAtSQhMsD4o6s7OSD32KVOksonKDSRJ-)        
- 
- Este vídeo muestra en funcionamiento la aplicación de ejemplo (Simple Example). [![DroneEngineeringEcosystem Badge](https://img.shields.io/badge/DEE-csDronLink_demoAplicación-pink.svg)](https://www.youtube.com/playlist?list=PLyAtSQhMsD4o6s7OSD32KVOksonKDSRJ-)        
+ En este video se explica cómo está organizada la librería (cosa que puede ser útil para el desarrollador de código para librería) y se muestran en funcionamiento los programas de test (esto será útil para el usuario de la librería). [![DroneEngineeringEcosystem Badge](https://img.shields.io/badge/DEE-csDronLink_organización-pink.svg)](https://youtu.be/1axWKmvyCt4-)        
+
+ Este vídeo muestra en funcionamiento la aplicación de ejemplo (Simple Example). [![DroneEngineeringEcosystem Badge](https://img.shields.io/badge/DEE-csDronLink_demoAplicación-pink.svg)](https://youtu.be/uCsa8FmVrcI-)        
        
- Y aquí se explica brevemente el código de esa aplicación.   [![DroneEngineeringEcosystem Badge](https://img.shields.io/badge/DEE-csDronLink_códigoAplicación-pink.svg)](https://www.youtube.com/playlist?list=PLyAtSQhMsD4o6s7OSD32KVOksonKDSRJ-)        
+ Y aquí se explica brevemente el código de esa aplicación.   [![DroneEngineeringEcosystem Badge](https://img.shields.io/badge/DEE-csDronLink_códigoAplicación-pink.svg)](https://youtu.be/MuSE1AkeNsw-)        
    
- Este vídeo muestra cómo crear una aplicación super sencilla desde cero, usando la librería. [![DroneEngineeringEcosystem Badge](https://img.shields.io/badge/DEE-csDronLink_demoDesdeCero-pink.svg)](https://www.youtube.com/playlist?list=PLyAtSQhMsD4o6s7OSD32KVOksonKDSRJ-)       
+ Este vídeo muestra cómo crear una aplicación super sencilla desde cero, usando la librería. [![DroneEngineeringEcosystem Badge](https://img.shields.io/badge/DEE-csDronLink_demoDesdeCero-pink.svg)](https://youtu.be/I4_2nhkEZI8-)       
 
  ## 4. Trabajo futuro   
  Lo que hay aquí es una versión operativa pero muy preliminar de la librería. Hay mucho trabajo por delante, no solo para ampliar sus funcionalidades, sino también para mejorar las que tiene ya. Algunas mejoras pendientes son estas:

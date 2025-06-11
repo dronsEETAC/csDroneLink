@@ -32,7 +32,7 @@ namespace csDronLink
             {
                 wploader.Add(new MAVLink.mavlink_mission_item_int_t()
                 {
-                    target_system = 1,
+                    target_system = this.id,
                     target_component = 1,
                     seq = (ushort)seq,
                     frame = (byte)MAVLink.MAV_FRAME.GLOBAL,
@@ -55,7 +55,7 @@ namespace csDronLink
                 {
                     wploader.Add(new MAVLink.mavlink_mission_item_int_t()
                     {
-                        target_system = 1,
+                        target_system = this.id,
                         target_component = 1,
                         seq = (ushort)seq,
                         frame = (byte)MAVLink.MAV_FRAME.GLOBAL,
@@ -75,7 +75,7 @@ namespace csDronLink
                     {
                         wploader.Add(new MAVLink.mavlink_mission_item_int_t()
                         {
-                            target_system = 1,
+                            target_system = this.id,
                             target_component = 1,
                             seq = (ushort)seq,
                             frame = (byte)MAVLink.MAV_FRAME.GLOBAL,
@@ -92,7 +92,7 @@ namespace csDronLink
             // Envío el número de waypoints
             var msg = new MAVLink.mavlink_mission_count_t
             {
-                target_system = 1,
+                target_system = this.id,
                 target_component = 1,
                 count = (ushort)wploader.Count,
                 mission_type = (byte)MAVLink.MAV_MISSION_TYPE.FENCE

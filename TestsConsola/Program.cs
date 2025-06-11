@@ -1,16 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using csDronLink;
+using static MAVLink;
+
 
 
 namespace TestsConsola
 {
     internal class Program
     {
+
+
         static void test_basico(Dron dron)
         {
             Console.WriteLine("Despego a 20 m");
@@ -38,8 +43,9 @@ namespace TestsConsola
             Console.WriteLine("Fin");
             Console.ReadKey();
         }
-        static void ProcesarTelemetria(List<(string nombre, float valor)> telemetria)
+        static void ProcesarTelemetria(byte id, List<(string nombre, float valor)> telemetria)
         {
+            Console.WriteLine("Telemetría del dron: {0}", id);
             foreach (var telem in telemetria)
                 Console.Write("{0}: {1} ---", telem.nombre, telem.valor);
             Console.WriteLine();
@@ -83,7 +89,8 @@ namespace TestsConsola
             Console.ReadKey();
         }
 
-        static void EnDestino (object dron)
+        static void EnDestino (byte id,object dron)
+            // La librería nos envia siempre en los callbacks como primer parámetro el id del dron
         {
             Console.WriteLine("En destino");
             Dron miDron = (Dron)dron;
@@ -91,7 +98,7 @@ namespace TestsConsola
             Console.WriteLine("En tierra");
 
         } 
-        static void EnAire (object dron)
+        static void EnAire (byte id, object dron)
         {
             Console.WriteLine("En el aire");
             Dron miDron = (Dron) dron;
@@ -111,11 +118,11 @@ namespace TestsConsola
                 Thread.Sleep(5000);
             }
         }
-        static void EnWayPoint (object n)
+        static void EnWayPoint (byte id, object n)
         {
             Console.WriteLine("He llegado al waypoint "+ n);
         }
-        static void FinMision (object dron)
+        static void FinMision (byte id, object dron)
         {
             Console.WriteLine("Retorno");
             Dron miDron = (Dron)dron;
@@ -218,20 +225,88 @@ namespace TestsConsola
 
            
         }
+
+        static void test_telemetria_enjambre (List<Dron> enjambre)
+        {
+            foreach (Dron dron in enjambre)
+                dron.EnviarDatosTelemetria(ProcesarTelemetria);
+            Thread.Sleep(10000);
+            foreach (Dron dron in enjambre)
+                dron.DetenerDatosTelemetria();
+
+            Console.WriteLine("Fin");
+        }
+
+        static void EnDestino2(byte id, object dron)
+        {
+            Console.WriteLine("En destino el dron: {0}", id);
+            Dron miDron = (Dron)dron;
+            miDron.Aterrizar(bloquear: false);
+            Console.WriteLine("Aterrizando el dron: {0}", id);
+
+        }
+
+        static void EnAire2(byte id, object dron)
+        {
+            Console.WriteLine("En el aire el dron: {0}", id);
+            Dron miDron = (Dron)dron;
+            Console.WriteLine("Muevo 20 metros a la izquierda el dron: {0}",  id);
+            miDron.Mover("Left", 20, bloquear: false, f: EnDestino2, param: miDron);
+        }
+
+        static void test_basico_enjambre(List<Dron> enjambre)
+        {
+            foreach (Dron dron in enjambre)
+                dron.Despegar(20, bloquear: false, f: EnAire2, param: dron);
+            for (int i = 0; i<20; i++)
+            {
+                Console.WriteLine("Haciendo otras cosas");
+                Thread.Sleep(5000);
+            }
+
+            Console.WriteLine("Fin");
+        }
         static void Main(string[] args)
         {
+
             Dron miDron = new Dron();
             miDron.Conectar("produccion", "COM21");
             Console.WriteLine("Conectado");
             //test_basico(miDron);
             //test_navegacion(miDron);
             test_telemetria(miDron);
+
+
+            ///////////////////////////////// Pruebas con un dron
+            //Dron miDron = new Dron(3);
+            //miDron.Conectar("simulacion");
+            //test_basico(miDron);
+            //test_navegacion(miDron);
+
             //test_cambioHeading(miDron);
             //test_llamadasNoBloqueantes(miDron);
             //test_mision (miDron);
             //test_escenario(miDron);
             //test_irAPunto (miDron);
+            //Console.ReadKey();
+ 
+
+
+            //////////////////////// Pruebas con un enjambre de 4 drones
+            // Es necesario poner en marcha desde Mission Planner la simulación
+            // de los 4 drones
+            //List<Dron> enjambre = new List<Dron>();
+            //for (byte i = 1; i <= 4; i++)
+            //{
+            //    Dron dron = new Dron(i);
+            //    dron.Conectar("simulacion");
+            //    enjambre.Add(dron);
+            //}
+            // test_telemetria_enjambre (enjambre);
+            //test_basico_enjambre(enjambre);
+
             Console.ReadKey();
+
 
         }
     }

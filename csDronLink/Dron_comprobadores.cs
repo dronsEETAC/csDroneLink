@@ -8,7 +8,7 @@ namespace csDronLink
 {
     public partial class Dron
     {
-        public bool ComprobarEnAire(MAVLink.MAVLinkMessage msg, object targetAlt)
+        private bool ComprobarEnAire(MAVLink.MAVLinkMessage msg, object targetAlt)
         {
             // es la función que comprobará que la altitud del dron es la indicada como 
             // parámetro. Se usará para ver si el dron ha alcanzado la altura indicada en el despegue
@@ -18,7 +18,7 @@ namespace csDronLink
             // retorno el resultado de realizar la comprobacion (con un margen del 10%)
             return altitud > (int)targetAlt * 0.90;
         }
-        public bool ComprobarParado(MAVLink.MAVLinkMessage msg, object param = null)
+        private bool ComprobarParado(MAVLink.MAVLinkMessage msg, object param = null)
         {
             // verifica si el mensaje indica que la velocidad del dron es cero
             // Servirá para detectar que el dron ha llegado al destino
@@ -29,7 +29,7 @@ namespace csDronLink
             double velocidad = Math.Sqrt(vx * vx + vy * vy + vz * vz) / 100;
             return velocidad < 0.1;
         }
-        public bool ComprobarEnTierra(MAVLink.MAVLinkMessage msg, object param = null)
+        private bool ComprobarEnTierra(MAVLink.MAVLinkMessage msg, object param = null)
         {
             // es la función que comprobará que la altitud del dron es menor de 50 cm. Se usará para 
             // detectar el fin de la operación de aterrizaje o RTL

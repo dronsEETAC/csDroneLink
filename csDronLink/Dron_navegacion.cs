@@ -23,7 +23,7 @@ namespace csDronLink
                 Thread.Sleep(1000);
             }
         }
-        public void _Navegar(string direccion, Action<object> f = null, object param = null)
+        public void Navegar(string direccion)
         {
             int vx = 0, vy = 0, vz = 0;
             int velocidad = this.velocidad;
@@ -92,7 +92,7 @@ namespace csDronLink
             // Crear el mensaje SET_POSITION_TARGET_LOCAL_NED para navegar en la dirección indicada
             MAVLink.mavlink_set_position_target_local_ned_t moveCmd = new MAVLink.mavlink_set_position_target_local_ned_t
             {
-                target_system = 1,        // ID del sistema (autopiloto)
+                target_system = this.id,        // ID del sistema (autopiloto)
                 target_component = 1,     // ID del componente (controlador de vuelo)
                 coordinate_frame = (byte)MAVLink.MAV_FRAME.LOCAL_NED,  // Sistema de coordenadas local NED
                 type_mask = 0b_0000111111000111, // Ignorar posición, usar velocidad
@@ -119,21 +119,6 @@ namespace csDronLink
                 t.Start();
             }
 
-            if (f != null)
-                f(param);
-
-        }
-        public void Navegar(string direccion, Boolean bloquear = true, Action<object> f = null, object param = null)
-        {
-            if (bloquear)
-            {
-                this._Navegar(direccion);
-            }
-            else
-            {
-                Thread t = new Thread(() => _Navegar(direccion));
-                t.Start();
-            }
         }
 
     }
