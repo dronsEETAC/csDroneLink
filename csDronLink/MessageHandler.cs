@@ -72,7 +72,7 @@ namespace csDronLink
 
         private MAVLinkMessage LeerMensaje()
         {
-            if (modo == "producción")
+            if (modo == "produccion")
                 return mavlink.ReadPacket(puertoSerie.BaseStream);
             else
                 return mavlink.ReadPacket(puertoTCP);
@@ -80,7 +80,7 @@ namespace csDronLink
         public MessageHandler(string modo, object canal)
         {
             this.modo = modo;
-            if (modo == "producción")
+            if (modo == "produccion")
                 this.puertoSerie = (SerialPort)canal;
             else
                 this.puertoTCP = (NetworkStream)canal;

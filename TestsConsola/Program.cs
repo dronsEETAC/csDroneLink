@@ -48,16 +48,16 @@ namespace TestsConsola
         {
             Console.WriteLine("Pido datos de telemetria ");
             dron.EnviarDatosTelemetria(ProcesarTelemetria);
-            Console.WriteLine("Despego a 20 m");
-            dron.Despegar(20);
-            Console.WriteLine("Muevo 50 metros hacia la izquierda");
-            dron.Mover("Left", 50);
-            Console.WriteLine("Detengo el envio de datos");
-            dron.DetenerDatosTelemetria();
-            Console.WriteLine("Aterrizo");
-            dron.Aterrizar();
-            Console.WriteLine("Fin");
-            Console.ReadKey();
+            //Console.WriteLine("Despego a 20 m");
+            //dron.Despegar(20);
+            //Console.WriteLine("Muevo 50 metros hacia la izquierda");
+            //dron.Mover("Left", 50);
+            //Console.WriteLine("Detengo el envio de datos");
+            //dron.DetenerDatosTelemetria();
+            //Console.WriteLine("Aterrizo");
+            //dron.Aterrizar();
+            //Console.WriteLine("Fin");
+            //Console.ReadKey();
         }
         static void test_cambioHeading(Dron dron)
         {
@@ -221,13 +221,14 @@ namespace TestsConsola
         static void Main(string[] args)
         {
             Dron miDron = new Dron();
-            miDron.Conectar("Simulacion");
+            miDron.Conectar("produccion", "COM21");
+            Console.WriteLine("Conectado");
             //test_basico(miDron);
             //test_navegacion(miDron);
-            //test_telemetria(miDron);
+            test_telemetria(miDron);
             //test_cambioHeading(miDron);
             //test_llamadasNoBloqueantes(miDron);
-            test_mision (miDron);
+            //test_mision (miDron);
             //test_escenario(miDron);
             //test_irAPunto (miDron);
             Console.ReadKey();

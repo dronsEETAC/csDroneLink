@@ -9,3 +9,15 @@ E:\Julio2018\Docencia\RPAS\DroneEngineeringEcosystem\csDronLink\Demo_csDronLink\
 E:\Julio2018\Docencia\RPAS\DroneEngineeringEcosystem\csDronLink\Demo_csDronLink\TestsConsola\obj\Debug\TestsConsola.csproj.CopyComplete
 E:\Julio2018\Docencia\RPAS\DroneEngineeringEcosystem\csDronLink\Demo_csDronLink\TestsConsola\obj\Debug\TestsConsola.exe
 E:\Julio2018\Docencia\RPAS\DroneEngineeringEcosystem\csDronLink\Demo_csDronLink\TestsConsola\obj\Debug\TestsConsola.pdb
+C:\Users\USER\Documents\Miguel\DEE_all_repos\csDronLink\csDronLink\TestsConsola\bin\Debug\TestsConsola.exe.config
+C:\Users\USER\Documents\Miguel\DEE_all_repos\csDronLink\csDronLink\TestsConsola\bin\Debug\TestsConsola.exe
+C:\Users\USER\Documents\Miguel\DEE_all_repos\csDronLink\csDronLink\TestsConsola\bin\Debug\TestsConsola.pdb
+C:\Users\USER\Documents\Miguel\DEE_all_repos\csDronLink\csDronLink\TestsConsola\bin\Debug\csDronLink.dll
+C:\Users\USER\Documents\Miguel\DEE_all_repos\csDronLink\csDronLink\TestsConsola\bin\Debug\csDronLink.pdb
+C:\Users\USER\Documents\Miguel\DEE_all_repos\csDronLink\csDronLink\TestsConsola\bin\Debug\csDronLink.dll.config
+C:\Users\USER\Documents\Miguel\DEE_all_repos\csDronLink\csDronLink\TestsConsola\obj\Debug\TestsConsola.csproj.AssemblyReference.cache
+C:\Users\USER\Documents\Miguel\DEE_all_repos\csDronLink\csDronLink\TestsConsola\obj\Debug\TestsConsola.csproj.SuggestedBindingRedirects.cache
+C:\Users\USER\Documents\Miguel\DEE_all_repos\csDronLink\csDronLink\TestsConsola\obj\Debug\TestsConsola.csproj.CoreCompileInputs.cache
+C:\Users\USER\Documents\Miguel\DEE_all_repos\csDronLink\csDronLink\TestsConsola\obj\Debug\TestsConsola.csproj.CopyComplete
+C:\Users\USER\Documents\Miguel\DEE_all_repos\csDronLink\csDronLink\TestsConsola\obj\Debug\TestsConsola.exe
+C:\Users\USER\Documents\Miguel\DEE_all_repos\csDronLink\csDronLink\TestsConsola\obj\Debug\TestsConsola.pdb
