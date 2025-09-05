@@ -327,7 +327,7 @@ namespace SimpleExample
 
 
 
-        private void EnAire(object param)
+        private void EnAire(byte id,object param)
         {
             // Esto es lo que haré cuando el dron haya alcanzado la altura de despegue
             despegarBtn.BackColor = Color.Green;
@@ -364,7 +364,7 @@ namespace SimpleExample
             int distancia = Convert.ToInt32(pasoLbl.Text);
             dron.Mover(direccion, distancia, bloquear: false);
         }
-        private void EnTierra(object mensaje)
+        private void EnTierra(byte id,object mensaje)
         {
             // Aqui vendre cuando el dron esté en tierra
             // El mensaje me dice si vengo de un aterrizaje o de un RTL
@@ -401,7 +401,7 @@ namespace SimpleExample
             dron.DetenerDatosTelemetria();
         }
 
-        private void ProcesarTelemetria(List<(string nombre, float valor)> telemetria)
+        private void ProcesarTelemetria(byte id, List<(string nombre, float valor)> telemetria)
         {
             // Aqui vendre cada vez que llegue un paquete de telemetría
             double lat = ((double)telemetria[1].valor) / 0.1E+8;
@@ -641,7 +641,7 @@ namespace SimpleExample
 
 
         }
-        private void FinMision (object param=null)
+        private void FinMision (byte id, object param=null)
         {
             // Borro los puntos y lineas de la misión
             overlay.Markers.Clear();
@@ -649,7 +649,7 @@ namespace SimpleExample
             mision = null;
             dron.PonModoGuiado();
         }
-        private void EnWaypoint (object n)
+        private void EnWaypoint (byte id, object n)
         {
             // Acabo de llegar al siguiente waypoint de la misión
             Console.WriteLine("Estoy en waypoint " + (int) n);
