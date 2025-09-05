@@ -1,0 +1,9 @@
+C:\Users\Miguel\Documents\Miguel\DEE\csDronLink\prueba2\csDroneLink\ConsolaTest\bin\Debug\ConsolaTest.exe.config
+C:\Users\Miguel\Documents\Miguel\DEE\csDronLink\prueba2\csDroneLink\ConsolaTest\bin\Debug\ConsolaTest.exe
+C:\Users\Miguel\Documents\Miguel\DEE\csDronLink\prueba2\csDroneLink\ConsolaTest\bin\Debug\ConsolaTest.pdb
+C:\Users\Miguel\Documents\Miguel\DEE\csDronLink\prueba2\csDroneLink\ConsolaTest\bin\Debug\csDronLink.dll
+C:\Users\Miguel\Documents\Miguel\DEE\csDronLink\prueba2\csDroneLink\ConsolaTest\obj\Debug\ConsolaTest.csproj.AssemblyReference.cache
+C:\Users\Miguel\Documents\Miguel\DEE\csDronLink\prueba2\csDroneLink\ConsolaTest\obj\Debug\ConsolaTest.csproj.CoreCompileInputs.cache
+C:\Users\Miguel\Documents\Miguel\DEE\csDronLink\prueba2\csDroneLink\ConsolaTest\obj\Debug\ConsolaT.2209B4D9.Up2Date
+C:\Users\Miguel\Documents\Miguel\DEE\csDronLink\prueba2\csDroneLink\ConsolaTest\obj\Debug\ConsolaTest.exe
+C:\Users\Miguel\Documents\Miguel\DEE\csDronLink\prueba2\csDroneLink\ConsolaTest\obj\Debug\ConsolaTest.pdb

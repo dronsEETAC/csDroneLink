@@ -1,17 +1,14 @@
-﻿using System;
+﻿using csDronLink;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using csDronLink;
-using static MAVLink;
 
-
-
-namespace TestsConsola
+namespace ConsolaTest
 {
+
     internal class Program
     {
 
@@ -22,7 +19,7 @@ namespace TestsConsola
             dron.Despegar(20);
             Console.WriteLine("Muevo 50 metros hacia atras");
             dron.Mover("Back", 50);
-            
+
             Console.WriteLine("Aterrizo");
             dron.Aterrizar();
             Console.WriteLine("Fin");
@@ -82,29 +79,29 @@ namespace TestsConsola
             Console.WriteLine("Muevo 10 metros hacia delante");
             dron.Mover("Forward", 10);
 
-         
+
             Console.WriteLine("RTL");
             dron.RTL();
             Console.WriteLine("Fin");
             Console.ReadKey();
         }
 
-        static void EnDestino (byte id,object dron)
-            // La librería nos envia siempre en los callbacks como primer parámetro el id del dron
+        static void EnDestino(byte id, object dron)
+        // La librería nos envia siempre en los callbacks como primer parámetro el id del dron
         {
             Console.WriteLine("En destino");
             Dron miDron = (Dron)dron;
             miDron.Aterrizar();
             Console.WriteLine("En tierra");
 
-        } 
-        static void EnAire (byte id, object dron)
+        }
+        static void EnAire(byte id, object dron)
         {
             Console.WriteLine("En el aire");
-            Dron miDron = (Dron) dron;
+            Dron miDron = (Dron)dron;
             Console.WriteLine("Ya estamos en el aire");
             Console.WriteLine("Muevo 20 metros hacia atras");
-            miDron.Mover("Back", 20, bloquear: false, f:EnDestino, param : miDron);
+            miDron.Mover("Back", 20, bloquear: false, f: EnDestino, param: miDron);
         }
 
 
@@ -118,11 +115,11 @@ namespace TestsConsola
                 Thread.Sleep(5000);
             }
         }
-        static void EnWayPoint (byte id, object n)
+        static void EnWayPoint(byte id, object n)
         {
-            Console.WriteLine("He llegado al waypoint "+ n);
+            Console.WriteLine("He llegado al waypoint " + n);
         }
-        static void FinMision (byte id, object dron)
+        static void FinMision(byte id, object dron)
         {
             Console.WriteLine("Retorno");
             Dron miDron = (Dron)dron;
@@ -131,12 +128,12 @@ namespace TestsConsola
             Console.ReadKey();
 
         }
-        static void test_mision (Dron dron)
+        static void test_mision(Dron dron)
         {
             // Se asume que el dron está en el centro del Nou Camp
             // En este misión el dron visitará las 4 esquinas del campo
-            List<(float lat, float lon)> mision= new List<(float lat, float lon)>();
-         
+            List<(float lat, float lon)> mision = new List<(float lat, float lon)>();
+
             mision.Add((41.381231903161684f, 2.1222157786711398f));
             mision.Add((41.38144678751476f, 2.1229592490702984f));
             mision.Add((41.380573014924174f, 2.1234296078942556f));
@@ -147,10 +144,10 @@ namespace TestsConsola
             Console.WriteLine("Despego a 20 m");
             dron.Despegar(20);
             Console.WriteLine("Ejecuto la mision");
-            dron.EjecutarMision(bloquear:false, EnWaypoint: EnWayPoint, f: FinMision, param:dron);
-           
+            dron.EjecutarMision(bloquear: false, EnWaypoint: EnWayPoint, f: FinMision, param: dron);
+
         }
-        static void test_escenario (Dron dron)
+        static void test_escenario(Dron dron)
         {
             // El escenario se situa en el Nou Camp. Consta de un fence de
             // inclusión que marca los límites del terreno de juego, dos obstaculos
@@ -160,32 +157,32 @@ namespace TestsConsola
             // si se han cargado bien los fences
             List<(float lat, float lon)> limites = new List<(float lat, float lon)>
                 {
-                    (41.381231903161684f, 2.1222157786711398f),  
-                    (41.38144678751476f, 2.1229592490702984f),  
-                    (41.380573014924174f, 2.1234296078942556f),   
-                    (41.38035516016044f, 2.122686439511463f)   
+                    (41.381231903161684f, 2.1222157786711398f),
+                    (41.38144678751476f, 2.1229592490702984f),
+                    (41.380573014924174f, 2.1234296078942556f),
+                    (41.38035516016044f, 2.122686439511463f)
                 };
 
             // Las dos áreas pequeñas como obstáculos
             List<(float lat, float lon)> areaPequeña1 = new List<(float lat, float lon)>
                 {
-                     (41.3812630831125f, 2.122367454083514f),  
-                     (41.38140016195083f, 2.1228174183374695f), 
-                     (41.38126985244463f, 2.1228873375949764f), 
-                     (41.381135311836346f, 2.1224407565309003f)  
+                     (41.3812630831125f, 2.122367454083514f),
+                     (41.38140016195083f, 2.1228174183374695f),
+                     (41.38126985244463f, 2.1228873375949764f),
+                     (41.381135311836346f, 2.1224407565309003f)
                 };
-         
+
             List<(float lat, float lon)> areaPequeña2 = new List<(float lat, float lon)>
                 {
-                     (41.380528000007885f, 2.1227596575244694f), 
-                     (41.38066592656998f, 2.1232051108585854f),  
-                     (41.38053646176858f, 2.123277285576012f),   
-                     (41.380406996709425f, 2.122828449052016f)  
+                     (41.380528000007885f, 2.1227596575244694f),
+                     (41.38066592656998f, 2.1232051108585854f),
+                     (41.38053646176858f, 2.123277285576012f),
+                     (41.380406996709425f, 2.122828449052016f)
                 };
-       
+
 
             // Y el circulo central también como obstaculo
-            
+
             List<(float lat, float lon)> circuloCentral = new List<(float lat, float lon)>
                 {
                      (41.38089947817193f, 2.122819453881491f),  // centro
@@ -203,7 +200,7 @@ namespace TestsConsola
             Console.ReadKey();
 
         }
-        static void test_irAPunto (Dron dron)
+        static void test_irAPunto(Dron dron)
         {
             // Se asume que el dron está en el centro del Nou Camp
             // El dron irá a las 4 esquinas del campo, aumentando la
@@ -223,10 +220,10 @@ namespace TestsConsola
             Console.WriteLine("Fin");
             Console.ReadKey();
 
-           
+
         }
 
-        static void test_telemetria_enjambre (List<Dron> enjambre)
+        static void test_telemetria_enjambre(List<Dron> enjambre)
         {
             foreach (Dron dron in enjambre)
                 dron.EnviarDatosTelemetria(ProcesarTelemetria);
@@ -250,7 +247,7 @@ namespace TestsConsola
         {
             Console.WriteLine("En el aire el dron: {0}", id);
             Dron miDron = (Dron)dron;
-            Console.WriteLine("Muevo 20 metros a la izquierda el dron: {0}",  id);
+            Console.WriteLine("Muevo 20 metros a la izquierda el dron: {0}", id);
             miDron.Mover("Left", 20, bloquear: false, f: EnDestino2, param: miDron);
         }
 
@@ -258,7 +255,7 @@ namespace TestsConsola
         {
             foreach (Dron dron in enjambre)
                 dron.Despegar(20, bloquear: false, f: EnAire2, param: dron);
-            for (int i = 0; i<20; i++)
+            for (int i = 0; i < 20; i++)
             {
                 Console.WriteLine("Haciendo otras cosas");
                 Thread.Sleep(5000);
@@ -270,7 +267,7 @@ namespace TestsConsola
         {
 
             Dron miDron = new Dron();
-            miDron.Conectar("produccion", "COM21");
+            miDron.Conectar("simulacion");
             Console.WriteLine("Conectado");
             //test_basico(miDron);
             //test_navegacion(miDron);
@@ -289,7 +286,7 @@ namespace TestsConsola
             //test_escenario(miDron);
             //test_irAPunto (miDron);
             //Console.ReadKey();
- 
+
 
 
             //////////////////////// Pruebas con un enjambre de 4 drones
