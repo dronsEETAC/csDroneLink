@@ -56,6 +56,12 @@
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="SharpDX, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.4.2.0\lib\net45\SharpDX.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.DirectInput, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.DirectInput.4.2.0\lib\net45\SharpDX.DirectInput.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -86,11 +92,13 @@
     <Compile Include="Dron_comprobadores.cs" />
     <Compile Include="Dron_despegue_aterrizaje_RTL.cs" />
     <Compile Include="Dron_escenario.cs" />
+    <Compile Include="Dron_EscribeFormato.cs" />
     <Compile Include="Dron_miscelanea.cs" />
     <Compile Include="Dron_mision.cs" />
     <Compile Include="Dron_movimiento.cs" />
     <Compile Include="Dron_navegacion.cs" />
     <Compile Include="Dron_parametros.cs" />
+    <Compile Include="Dron_RC.cs" />
     <Compile Include="Dron_telemetria.cs" />
     <Compile Include="mavlink.cs" />
     <Compile Include="MavlinkCRC.cs" />
@@ -98,6 +106,7 @@
     <Compile Include="MavlinkParse.cs" />
     <Compile Include="MavlinkUtil.cs" />
     <Compile Include="MessageHandler.cs" />
+    <Compile Include="MiJoystick.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

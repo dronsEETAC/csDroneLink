@@ -283,6 +283,8 @@ namespace SimpleExample
 
         private void but_connect_Click(object sender, EventArgs e)
         {
+       
+
             if (nombreHome == null)
                 MessageBox.Show("No has elegido la zona de vuelo (DroneLab o Nou Camp");
             else
@@ -668,6 +670,7 @@ namespace SimpleExample
             dron.EjecutarMision(bloquear: false, EnWaypoint:EnWaypoint, FinMision);
             button28.BackColor = Color.Green;
             button28.ForeColor = Color.White;
+          
         }
 
         private void cargarMisionBtn_Click(object sender, EventArgs e)
@@ -718,6 +721,11 @@ namespace SimpleExample
         private void ponGuiadoBtn_Click(object sender, EventArgs e)
         {
             dron.PonModoGuiado();
+        }
+
+        private void button30_Click(object sender, EventArgs e)
+        {
+            mision = null;
         }
     }
 

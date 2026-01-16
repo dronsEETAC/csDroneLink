@@ -72,10 +72,34 @@ namespace csDronLink
 
         private MAVLinkMessage LeerMensaje()
         {
+            MAVLinkMessage msg;
             if (modo == "produccion")
-                return mavlink.ReadPacket(puertoSerie.BaseStream);
+                msg = mavlink.ReadPacket(puertoSerie.BaseStream);
             else
-                return mavlink.ReadPacket(puertoTCP);
+                msg = mavlink.ReadPacket(puertoTCP);
+
+            //Console.WriteLine($"Mensaje recibido: ID={msg.msgid}, Tipo={msg.msgtypename}");
+
+            //// El buffer completo del paquete (header + payload + checksum)
+            //byte[] rawBytes = msg.buffer;
+
+            //if (rawBytes != null)
+            //{
+            //    Console.WriteLine("Formato HEX:");
+            //    Console.WriteLine(BitConverter.ToString(rawBytes));
+
+            //    Console.WriteLine("Formato BINARIO:");
+            //    foreach (byte b in rawBytes)
+            //    {
+            //        Console.Write(Convert.ToString(b, 2).PadLeft(8, '0') + " ");
+            //    }
+            //    Console.WriteLine("\n");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("⚠️ No se pudo obtener el buffer del mensaje.\n");
+            //}
+            return msg;
         }
         public MessageHandler(string modo, object canal)
         {
@@ -189,6 +213,13 @@ namespace csDronLink
             lock (lockObj) waitingThreads.Add(waiting);
             // hago que el solicitante espere
             return WaitNow(waiting, timeout);
+        }
+
+        public void Clear ()
+        {
+
+            lock (lockObj) waitingThreads.Clear();
+           
         }
 
         public MAVLinkMessage WaitNow(WaitingRequest waiting, int timeout)

@@ -1,5 +1,6 @@
 ﻿using csDronLink;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -42,7 +43,14 @@ namespace ConsolaTest
         }
         static void ProcesarTelemetria(byte id, List<(string nombre, float valor)> telemetria)
         {
-            Console.WriteLine("Telemetría del dron: {0}", id);
+            Console.WriteLine("Telemetría global del dron: {0}", id);
+            foreach (var telem in telemetria)
+                Console.Write("{0}: {1} ---", telem.nombre, telem.valor);
+            Console.WriteLine();
+        }
+        static void ProcesarTelemetriaLocal(byte id, List<(string nombre, float valor)> telemetria)
+        {
+            Console.WriteLine("Telemetría local del dron: {0}", id);
             foreach (var telem in telemetria)
                 Console.Write("{0}: {1} ---", telem.nombre, telem.valor);
             Console.WriteLine();
@@ -51,6 +59,7 @@ namespace ConsolaTest
         {
             Console.WriteLine("Pido datos de telemetria ");
             dron.EnviarDatosTelemetria(ProcesarTelemetria);
+            dron.EnviarDatosTelemetriaLocal(ProcesarTelemetriaLocal);
             //Console.WriteLine("Despego a 20 m");
             //dron.Despegar(20);
             //Console.WriteLine("Muevo 50 metros hacia la izquierda");
@@ -108,7 +117,7 @@ namespace ConsolaTest
         static void test_llamadasNoBloqueantes(Dron dron)
         {
             Console.WriteLine("Despego a 20 m");
-            dron.Despegar(20, bloquear: false, f: EnAire, param: dron);
+            dron.Despegar(20, bloquear: false, f: EnAire2, param: dron);
             while (true)
             {
                 Console.WriteLine("Haciendo otras cosas");
@@ -146,6 +155,10 @@ namespace ConsolaTest
             Console.WriteLine("Ejecuto la mision");
             dron.EjecutarMision(bloquear: false, EnWaypoint: EnWayPoint, f: FinMision, param: dron);
 
+        }
+        static void AvisoBrench ()
+        {
+            Console.WriteLine("Violación de alguno de los fences");
         }
         static void test_escenario(Dron dron)
         {
@@ -195,12 +208,49 @@ namespace ConsolaTest
                 areaPequeña2,
                 circuloCentral
             };
-            dron.EstableceEscenario(escenario);
+            dron.EstableceEscenario(escenario, AvisoBrench);
             Console.WriteLine("Escenario cargado. Compruebalo con Mission Planner");
+            Console.WriteLine("Despues pulsa cualquier tecla para recuperar el escenario");
+            Console.ReadKey();
+            Console.WriteLine("Ahora vamos a leer el escenario");
+            List<List<(float lat, float lon)>> escenario_leido = dron.LeeEscenario();
+
+            Console.WriteLine("Escenario original: ");
+            Console.WriteLine("------------------------------------");
+       
+            foreach (var sublista in escenario)
+            {
+                Console.WriteLine("Sublista:");
+
+                foreach (var punto in sublista)
+                {
+                    Console.WriteLine($"Lat: {punto.lat}, Lon: {punto.lon}");
+                }
+
+                Console.WriteLine(); // Línea en blanco entre sublistas
+            }
+
+            Console.WriteLine("------------------------------------");
+            Console.WriteLine(); ;
+            Console.WriteLine("Escenario leido: ");
+            Console.WriteLine("------------------------------------");
+
+            foreach (var sublista in escenario)
+            {
+                Console.WriteLine("Sublista:");
+
+                foreach (var punto in sublista)
+                {
+                    Console.WriteLine($"Lat: {punto.lat}, Lon: {punto.lon}");
+                }
+
+                Console.WriteLine(); // Línea en blanco entre sublistas
+            }
+
             Console.ReadKey();
 
         }
-        static void test_irAPunto(Dron dron)
+        static void test_irAPuntoGlobal(Dron dron)
         {
             // Se asume que el dron está en el centro del Nou Camp
             // El dron irá a las 4 esquinas del campo, aumentando la
@@ -220,6 +270,26 @@ namespace ConsolaTest
             Console.WriteLine("Fin");
             Console.ReadKey();
 
+        }
+        static void test_irAPuntoLocal(Dron dron)
+        {
+            // Se asume que el dron está en el centro del Nou Camp
+            // El dron irá a las 4 esquinas del campo, aumentando la
+            // altitud de 5 en 5 metros
+            Console.WriteLine("Despego a 20 m");
+            dron.Despegar(20);
+            Console.WriteLine("voy a (10,10,5");
+            dron.IrAPosicionLocal(10,10,5);
+            Console.WriteLine("voy a (10,-10,15");
+            dron.IrAPosicionLocal(10, -10, 15);
+            Console.WriteLine("voy a (-10,-10,10");
+            dron.IrAPosicionLocal(-10, -10, 10);
+            Console.WriteLine("voy a (-10,10,5");
+            dron.IrAPosicionLocal(-10, 10, 5);
+            Console.WriteLine("Retorno");
+            dron.RTL();
+            Console.WriteLine("Fin");
+            Console.ReadKey();
 
         }
 
@@ -263,12 +333,66 @@ namespace ConsolaTest
 
             Console.WriteLine("Fin");
         }
+        static void test_guiado_RC (Dron dron)
+        {
+            Console.WriteLine("Vamos a despegar");
+            dron.Despegar(5);
+            dron.PonModoLoiter();
+            Console.WriteLine("Neutro");
+            for (int i = 0; i < 100; i++)
+            {
+                dron.SendRC(1500, 1500, 1500, 1500);
+                Thread.Sleep(100);
+            }
+            Console.WriteLine("Throttle");
+            for (int i = 0; i < 100; i++)
+            {
+                dron.SendRC(1500, 1500, 2000, 1500);
+                Thread.Sleep(100);
+            }
+            Console.WriteLine("Yaw");
+            for (int i = 0; i < 100; i++)
+            {
+                dron.SendRC(1500, 1500, 1500, 1600);
+                Thread.Sleep(100);
+            }
+            Console.WriteLine("Roll");
+            for (int i = 0; i < 100; i++)
+            {
+                dron.SendRC(2000, 1500, 1500, 1500);
+                Thread.Sleep(100);
+            }
+            Console.WriteLine("Pitch");
+            for (int i = 0; i < 100; i++)
+            {
+                dron.SendRC(1500, 2000, 1500, 1500);
+                Thread.Sleep(100);
+            }
+            dron.Aterrizar();
+            Console.WriteLine("En tierra");
+
+        }
+        static void Identificar (byte id)
+        {
+            Console.WriteLine("Soy el dron: {0}", id);
+        }
+        static void test_Joystick (Dron dron)
+        {
+            MiJoystick joystick = new MiJoystick(dron, Identificar);
+            Console.ReadKey();
+            joystick.PararJoystick();
+        }
         static void Main(string[] args)
         {
 
             Dron miDron = new Dron();
-            miDron.Conectar("simulacion");
+            //miDron.Conectar("simulacion");
+    
+            miDron.Conectar("produccion", "com3");
             Console.WriteLine("Conectado");
+
+            //Thread.Sleep(5000);
+            //miDron.Reboot();
             //test_basico(miDron);
             //test_navegacion(miDron);
             test_telemetria(miDron);
@@ -285,6 +409,9 @@ namespace ConsolaTest
             //test_mision (miDron);
             //test_escenario(miDron);
             //test_irAPunto (miDron);
+            //test_irAPuntoLocal(miDron);
+            //test_guiado_RC(miDron);
+            //test_Joystick(miDron);
             //Console.ReadKey();
 
 

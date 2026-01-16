@@ -23,6 +23,19 @@ namespace csDronLink
             byte[] packet = mavlink.GenerateMAVLinkPacket10(MAVLink.MAVLINK_MSG_ID.SET_MODE, setMode);
             EnviarMensaje(packet);
         }
+        public void PonModoLoiter()
+        {
+            // Primero ponemos el dron en modo GUIDED
+            MAVLink.mavlink_set_mode_t setMode = new MAVLink.mavlink_set_mode_t
+            {
+                target_system = this.id,
+                base_mode = (byte)MAVLink.MAV_MODE_FLAG.CUSTOM_MODE_ENABLED,
+                custom_mode = 5 // LOITER Mode en ArduPilot
+            };
+
+            byte[] packet = mavlink.GenerateMAVLinkPacket10(MAVLink.MAVLINK_MSG_ID.SET_MODE, setMode);
+            EnviarMensaje(packet);
+        }
         public void CambiaVelocidad(int velocidad)
         {
             this.velocidad = velocidad;
@@ -92,6 +105,31 @@ namespace csDronLink
                 Thread t = new Thread(() => _CambiarHeading(nuevoHeading, f, param));
                 t.Start();
             }
+        }
+        public void Reboot()
+        {
+            MAVLink.mavlink_command_long_t rebootCmd = new MAVLink.mavlink_command_long_t
+            {
+                target_system = this.id,
+                target_component = 1, // normalmente el autopiloto es el componente 1
+                command = (ushort)MAVLink.MAV_CMD.PREFLIGHT_REBOOT_SHUTDOWN,
+                confirmation = 0,
+                param1 = 1,  // reboot autopilot
+                param2 = 0,  // reboot IO (pon 1 si quieres reiniciar también IO)
+                param3 = 0,
+                param4 = 0,
+                param5 = 0,
+                param6 = 0,
+                param7 = 0
+            };
+
+            // Empaquetar el mensaje MAVLink
+            byte[] packet = mavlink.GenerateMAVLinkPacket10(
+                MAVLink.MAVLINK_MSG_ID.COMMAND_LONG, rebootCmd
+            );
+
+            // Enviar por tu función habitual
+            EnviarMensaje(packet);
         }
 
     }

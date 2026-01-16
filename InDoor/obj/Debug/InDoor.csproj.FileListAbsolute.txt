@@ -1,0 +1,15 @@
+C:\Users\Miguel\Documents\Miguel\DEE\csDronLink\prueba3\csDroneLink\InDoor\bin\Debug\InDoor.exe.config
+C:\Users\Miguel\Documents\Miguel\DEE\csDronLink\prueba3\csDroneLink\InDoor\bin\Debug\InDoor.exe
+C:\Users\Miguel\Documents\Miguel\DEE\csDronLink\prueba3\csDroneLink\InDoor\bin\Debug\InDoor.pdb
+C:\Users\Miguel\Documents\Miguel\DEE\csDronLink\prueba3\csDroneLink\InDoor\obj\Debug\InDoor.csproj.AssemblyReference.cache
+C:\Users\Miguel\Documents\Miguel\DEE\csDronLink\prueba3\csDroneLink\InDoor\obj\Debug\InDoor.Properties.Resources.resources
+C:\Users\Miguel\Documents\Miguel\DEE\csDronLink\prueba3\csDroneLink\InDoor\obj\Debug\InDoor.csproj.GenerateResource.cache
+C:\Users\Miguel\Documents\Miguel\DEE\csDronLink\prueba3\csDroneLink\InDoor\obj\Debug\InDoor.csproj.CoreCompileInputs.cache
+C:\Users\Miguel\Documents\Miguel\DEE\csDronLink\prueba3\csDroneLink\InDoor\obj\Debug\InDoor.exe
+C:\Users\Miguel\Documents\Miguel\DEE\csDronLink\prueba3\csDroneLink\InDoor\obj\Debug\InDoor.pdb
+C:\Users\Miguel\Documents\Miguel\DEE\csDronLink\prueba3\csDroneLink\InDoor\obj\Debug\InDoor.exe.config
+C:\Users\Miguel\Documents\Miguel\DEE\csDronLink\prueba3\csDroneLink\InDoor\bin\Debug\csDronLink.dll
+C:\Users\Miguel\Documents\Miguel\DEE\csDronLink\prueba3\csDroneLink\InDoor\bin\Debug\csDronLink.pdb
+C:\Users\Miguel\Documents\Miguel\DEE\csDronLink\prueba3\csDroneLink\InDoor\bin\Debug\csDronLink.dll.config
+C:\Users\Miguel\Documents\Miguel\DEE\csDronLink\prueba3\csDroneLink\InDoor\obj\Debug\InDoor.csproj.Up2Date
+C:\Users\Miguel\Documents\Miguel\DEE\csDronLink\prueba3\csDroneLink\InDoor\obj\Debug\InDoor.Form1.resources

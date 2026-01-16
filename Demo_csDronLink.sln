@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleExample", "SimpleExam
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsolaTest", "ConsolaTest\ConsolaTest.csproj", "{31872EF7-C79D-4596-83E1-C77D95E55B55}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InDoor", "InDoor\InDoor.csproj", "{7FE6A202-DDF7-4641-B419-149CDB2E8392}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		aaa|Any CPU = aaa|Any CPU
@@ -34,6 +36,12 @@ Global
 		{31872EF7-C79D-4596-83E1-C77D95E55B55}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31872EF7-C79D-4596-83E1-C77D95E55B55}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31872EF7-C79D-4596-83E1-C77D95E55B55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FE6A202-DDF7-4641-B419-149CDB2E8392}.aaa|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FE6A202-DDF7-4641-B419-149CDB2E8392}.aaa|Any CPU.Build.0 = Debug|Any CPU
+		{7FE6A202-DDF7-4641-B419-149CDB2E8392}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FE6A202-DDF7-4641-B419-149CDB2E8392}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FE6A202-DDF7-4641-B419-149CDB2E8392}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FE6A202-DDF7-4641-B419-149CDB2E8392}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

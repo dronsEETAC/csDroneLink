@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using static MAVLink;
 
 namespace csDronLink
 {
@@ -20,8 +21,18 @@ namespace csDronLink
                 target_system = this.id,
                 target_component = 1
             };
-            byte[] packet = mavlink.GenerateMAVLinkPacket10(MAVLink.MAVLINK_MSG_ID.MISSION_COUNT, clearMission);
+            byte[] packet = mavlink.GenerateMAVLinkPacket10(MAVLink.MAVLINK_MSG_ID.MISSION_CLEAR_ALL, clearMission);
             EnviarMensaje(packet);
+
+            string msgType;
+            // Espero la confirmación 
+            msgType = ((int)MAVLink.MAVLINK_MSG_ID.MISSION_ACK).ToString();
+            MAVLink.MAVLinkMessage response2 = messageHandler.WaitForMessageBlock(
+                msgType,
+                timeout: -1
+            );
+
+
 
 
             // POR ALGUNA RAZON que no controlo tengo que enviar dos veces el primer waypoint de la misión
@@ -61,7 +72,7 @@ namespace csDronLink
 
             packet = mavlink.GenerateMAVLinkPacket10(MAVLink.MAVLINK_MSG_ID.MISSION_COUNT, countMsg);
             EnviarMensaje(packet);
-            string msgType;
+        
             // Ahora espero que el autopiloto me vaya pidiendo los waypoints uno a uno
             while (true)
             {
@@ -79,7 +90,7 @@ namespace csDronLink
 
             // Espero la confirmación final
             msgType = ((int)MAVLink.MAVLINK_MSG_ID.MISSION_ACK).ToString();
-            MAVLink.MAVLinkMessage response2 = messageHandler.WaitForMessageBlock(
+            MAVLink.MAVLinkMessage response3 = messageHandler.WaitForMessageBlock(
                 msgType,
                 timeout: -1
             );
@@ -120,9 +131,8 @@ namespace csDronLink
             packet = mavlink.GenerateMAVLinkPacket10(MAVLink.MAVLINK_MSG_ID.COMMAND_LONG, cmd);
             EnviarMensaje(packet);
 
-
             // Ahora espero que se llegue a cada uno de los waypoints
-            for (int i = 1; i < numWaypoints; i++)
+            for (int i = 1; i < numWaypoints; i++)        
             {
                 msgType = ((int)MAVLink.MAVLINK_MSG_ID.MISSION_ITEM_REACHED).ToString();
                 mensaje = messageHandler.WaitForMessageBlock(
@@ -135,9 +145,11 @@ namespace csDronLink
                 if (EnWaypoint != null)
                     EnWaypoint(this.id, i);
             }
+         
             PonModoGuiado();
             if (f != null)
                 f(this.id, param);
+ 
         }
         public void EjecutarMision(Boolean bloquear = true, Action<byte,object> EnWaypoint = null, Action<byte,object> f = null, object param = null)
         {
@@ -149,8 +161,14 @@ namespace csDronLink
             }
             else
             {
-                Thread t = new Thread(() => _EjecutarMision(EnWaypoint, f, param));
-                t.Start();
+                if (this.t != null)
+                {
+                    this.t.Abort();
+                    messageHandler.Clear();
+
+                }
+                this.t = new Thread(() => _EjecutarMision(EnWaypoint, f, param));
+                this.t.Start();
             }
         }
 
