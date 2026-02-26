@@ -33,6 +33,18 @@ namespace csDronLink
             // El cliente ya no quiere datos de telemetría
             this.ProcesarTelemetriaLocal = null;
         }
+        public void EnviarDatosNivelBateria(Action<byte, List<(string nombre, float valor)>> f)
+        {
+            // El cliente me pide que ejecute la función f cada vez que reciba un mensaje
+            // con datos de nivel de bateria
+            this.ProcesarNivelBateria = f;
+
+        }
+        public void DetenerDatosNivelBateria()
+        {
+            // El cliente ya no quiere datos de nivel de bateria
+            this.ProcesarNivelBateria = null;
+        }
 
     }
 }

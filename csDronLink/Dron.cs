@@ -1,24 +1,23 @@
-﻿using System;
+﻿using GMap.NET.MapProviders;
+using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity.Core.Metadata.Edm;
+using System.IO;
 using System.IO.Ports;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static MAVLink;
-
-using System.Threading;
-using System.Collections.Concurrent;
 using System.Net.Sockets;
-
+using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.ComTypes;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
+using System.Security.Cryptography;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 // MIRAR ESTO. SI LO QUITO NO RECONOCE LA CLASE WaitingRequest
 using static csDronLink.MessageHandler;
-using System.IO;
-using System.Data.Entity.Core.Metadata.Edm;
-using System.Runtime.InteropServices.ComTypes;
-using System.Runtime.InteropServices;
-using System.Runtime.Remoting.Metadata.W3cXsd2001;
-using System.Data;
-using GMap.NET.MapProviders;
+using static MAVLink;
 
 
 
@@ -47,6 +46,14 @@ namespace csDronLink
 
 
         // Los datos de telemetría que me interesan 
+        float mode;
+        //0:    "STABILIZE";
+        //3:    "AUTO";
+        //4:    "GUIDED";
+        //5:    "LOITER";
+        //6:    "RTL";
+        //9:    "LAND";
+
         float relative_alt;
         float lat;
         float lon;
@@ -54,11 +61,19 @@ namespace csDronLink
         float x;
         float y;
 
+        float voltage;
+        float current;
+        int remaining;
+     
+       
+            // Si me han pedido que envíe los datos de bateria al cliente lo hago
+
 
         // Aquí guardaré la referencia a la función que tengo que ejecutar
         // si el cliente me pide que le envíe los datos de telemetría.
         Action<byte, List<(string nombre, float valor)>> ProcesarTelemetria = null;
         Action<byte, List<(string nombre, float valor)>> ProcesarTelemetriaLocal = null;
+        Action<byte, List<(string nombre, float valor)>> ProcesarNivelBateria = null;
 
         // Cuando reciba un comando de navegación debo poner en marcha el 
         // bucle de navegación para que recuerde al autopiloto que mantenga
@@ -111,6 +126,7 @@ namespace csDronLink
                 telemetria.Add(("Lat", this.lat));
                 telemetria.Add(("Lon",this.lon));
                 telemetria.Add(("Heading",this.heading));
+                telemetria.Add(("Mode", this.mode));
                 // Los envío a la función que me indicó el cliente
                 // Envio también el identificador del dron
                 this.ProcesarTelemetria(this.id, telemetria);
@@ -135,6 +151,39 @@ namespace csDronLink
                 // Envio también el identificador del dron
                 this.ProcesarTelemetriaLocal(this.id, telemetria);
             }
+        }
+        private void RegistrarNivelBateria(MAVLinkMessage msg)
+        {
+            // Cada vez que se recibe un mensaje con datos de telemetria me los guardo
+            // Este mensaje trae datos del nivel de bateria
+            MAVLink.mavlink_sys_status_t sysStatus = (MAVLink.mavlink_sys_status_t)msg.data;
+
+
+            this.voltage = sysStatus.voltage_battery / 1000.0f;   // mV → V
+            this.current = sysStatus.current_battery / 100.0f;    // cA → A
+            this.remaining = sysStatus.battery_remaining;           // %
+     
+       
+            // Si me han pedido que envíe los datos de bateria al cliente lo hago
+            if (this.ProcesarNivelBateria != null)
+            {
+                List<(string nombre, float valor)> telemetria = new List<(string nombre, float valor)>();
+                telemetria.Add(("voltage", this.voltage));
+                telemetria.Add(("current", this.current));
+                telemetria.Add(("remaining", this.remaining));
+                // Los envío a la función que me indicó el cliente
+                // Envio también el identificador del dron
+                this.ProcesarNivelBateria(this.id, telemetria);
+            }
+        }
+
+
+        private void TratarHeartbeat(MAVLinkMessage msg)
+        {
+            // Cada vez que se recibe un mensaje con datos de telemetria me los guardo
+            // Este mensaje trae datos del modo de vuelo
+            MAVLink.mavlink_heartbeat_t beat = (MAVLink.mavlink_heartbeat_t)msg.data;
+            this.mode = (float) beat.custom_mode;
         }
 
         public void Conectar(string modo, string conector = null)
@@ -165,9 +214,16 @@ namespace csDronLink
 
 
             // Hago una petición asíncrona al handler para que me envíe todos los mensajes
+            // del tipo indicado, que son los que contienen los datos me interesan
+            // Le indico que cuando llegue un mensaje de ese tipo ejecute la función TratarHeartbeat
+            string msgType = ((int)MAVLink.MAVLINK_MSG_ID.HEARTBEAT).ToString();
+            messageHandler.RegisterHandler(msgType, TratarHeartbeat);
+
+
+            // Hago una petición asíncrona al handler para que me envíe todos los mensajes
             // del tipo indicado, que son los que contienen los datos de telemetria que me interesan
             // Le indico que cuando llegue un mensaje de ese tipo ejecute la función RegistrarTelemetria
-            string msgType = ((int)MAVLink.MAVLINK_MSG_ID.GLOBAL_POSITION_INT).ToString();
+            msgType = ((int)MAVLink.MAVLINK_MSG_ID.GLOBAL_POSITION_INT).ToString();
             messageHandler.RegisterHandler(msgType, RegistrarTelemetria);
 
             // Ahora le pido al autopiloto que me envíe mensajes del tipo indicado (los que contienen
@@ -186,7 +242,7 @@ namespace csDronLink
 
             // Hago una petición asíncrona al handler para que me envíe todos los mensajes
             // del tipo indicado, que son los que contienen los datos de telemetria LOCAL que me interesan
-            // Le indico que cuando llegue un mensaje de ese tipo ejecute la función RegistrarTelemetria
+            // Le indico que cuando llegue un mensaje de ese tipo ejecute la función RegistrarTelemetriaLocal
             msgType = ((int)MAVLink.MAVLINK_MSG_ID.LOCAL_POSITION_NED).ToString();
             messageHandler.RegisterHandler(msgType, RegistrarTelemetriaLocal);
 
@@ -203,6 +259,28 @@ namespace csDronLink
 
             packet = mavlink.GenerateMAVLinkPacket10(MAVLink.MAVLINK_MSG_ID.COMMAND_LONG, req);
             EnviarMensaje(packet);
+
+
+            // Hago una petición asíncrona al handler para que me envíe todos los mensajes
+            // del tipo indicado, que son los que contienen los datos de bateria que me interesan
+            // Le indico que cuando llegue un mensaje de ese tipo ejecute la función RegistrarNivelBateria 'SYS_STATUS'
+            msgType = ((int)MAVLink.MAVLINK_MSG_ID.SYS_STATUS).ToString();
+            messageHandler.RegisterHandler(msgType, RegistrarNivelBateria);
+
+            // Ahora le pido al autopiloto que me envíe mensajes del tipo indicado (los que contienen
+            // los datos de telemetría, cada 2 segundos)
+            req = new MAVLink.mavlink_command_long_t
+            {
+                target_system = this.id,
+                target_component = 1,
+                command = (ushort)MAVLink.MAV_CMD.SET_MESSAGE_INTERVAL,
+                param1 = (float)MAVLink.MAVLINK_MSG_ID.SYS_STATUS, // ID del mensaje que queremos recibir
+                param2 = 200000, // Intervalo en microsegundos (1 Hz = 1,000,000 µs)
+            };
+
+            packet = mavlink.GenerateMAVLinkPacket10(MAVLink.MAVLINK_MSG_ID.COMMAND_LONG, req);
+            EnviarMensaje(packet);
+
 
 
             Console.WriteLine("Enviado el mensaje de conexion");

@@ -55,11 +55,19 @@ namespace ConsolaTest
                 Console.Write("{0}: {1} ---", telem.nombre, telem.valor);
             Console.WriteLine();
         }
+        static void ProcesarNivelBateria(byte id, List<(string nombre, float valor)> telemetria)
+        {
+            Console.WriteLine("Nivel de bateria del dron: {0}", id);
+            foreach (var telem in telemetria)
+                Console.Write("{0}: {1} ---", telem.nombre, telem.valor);
+            Console.WriteLine();
+        }
         static void test_telemetria(Dron dron)
         {
             Console.WriteLine("Pido datos de telemetria ");
             dron.EnviarDatosTelemetria(ProcesarTelemetria);
             dron.EnviarDatosTelemetriaLocal(ProcesarTelemetriaLocal);
+            dron.EnviarDatosNivelBateria(ProcesarNivelBateria);
             //Console.WriteLine("Despego a 20 m");
             //dron.Despegar(20);
             //Console.WriteLine("Muevo 50 metros hacia la izquierda");
@@ -386,9 +394,9 @@ namespace ConsolaTest
         {
 
             Dron miDron = new Dron();
-            //miDron.Conectar("simulacion");
+            miDron.Conectar("simulacion");
     
-            miDron.Conectar("produccion", "com3");
+            //miDron.Conectar("produccion", "com3");
             Console.WriteLine("Conectado");
 
             //Thread.Sleep(5000);
@@ -408,7 +416,7 @@ namespace ConsolaTest
             //test_llamadasNoBloqueantes(miDron);
             //test_mision (miDron);
             //test_escenario(miDron);
-            //test_irAPunto (miDron);
+            //test_irAPuntoGlobal (miDron);
             //test_irAPuntoLocal(miDron);
             //test_guiado_RC(miDron);
             //test_Joystick(miDron);
