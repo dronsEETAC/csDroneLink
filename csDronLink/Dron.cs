@@ -64,8 +64,13 @@ namespace csDronLink
         float voltage;
         float current;
         int remaining;
-     
-       
+
+        float rollDeg;
+        float pitchDeg;
+
+        int freq; // frecuencia a la que se enviará la telemetría
+
+
             // Si me han pedido que envíe los datos de bateria al cliente lo hago
 
 
@@ -127,6 +132,9 @@ namespace csDronLink
                 telemetria.Add(("Lon",this.lon));
                 telemetria.Add(("Heading",this.heading));
                 telemetria.Add(("Mode", this.mode));
+                telemetria.Add(("RollDeg", this.rollDeg));
+                telemetria.Add(("PitchDeg", this.pitchDeg));
+
                 // Los envío a la función que me indicó el cliente
                 // Envio también el identificador del dron
                 this.ProcesarTelemetria(this.id, telemetria);
@@ -177,6 +185,29 @@ namespace csDronLink
             }
         }
 
+        private void RegistrarAttitude(MAVLinkMessage msg)
+        {
+            // 
+            // Este mensaje trae estos datos:
+            //uint32_t time_boot_ms
+            //float roll
+            //float pitch
+            //float yaw
+            //float rollspeed
+            //float pitchspeed
+            //float yawspeed
+
+            MAVLink.mavlink_attitude_t attitude = (MAVLink.mavlink_attitude_t)msg.data;
+
+            // Vienen en radianes
+            float rollRad = attitude.roll;
+            float pitchRad = attitude.pitch;
+
+          
+            // Convertir a grados
+            this.rollDeg = rollRad * (180 / (float) Math.PI);
+            this.pitchDeg = pitchRad * (180 / (float)Math.PI);
+        }
 
         private void TratarHeartbeat(MAVLinkMessage msg)
         {
@@ -186,8 +217,9 @@ namespace csDronLink
             this.mode = (float) beat.custom_mode;
         }
 
-        public void Conectar(string modo, string conector = null)
+        public void Conectar(string modo, string conector = null, int freq = 4)
         {
+            this.freq = freq;
             this.modo = modo;
             if (modo == "produccion")
             {
@@ -226,6 +258,7 @@ namespace csDronLink
             msgType = ((int)MAVLink.MAVLINK_MSG_ID.GLOBAL_POSITION_INT).ToString();
             messageHandler.RegisterHandler(msgType, RegistrarTelemetria);
 
+            int periodo = (1 / this.freq) * 1000000;
             // Ahora le pido al autopiloto que me envíe mensajes del tipo indicado (los que contienen
             // los datos de telemetría, cada 2 segundos)
             MAVLink.mavlink_command_long_t req = new MAVLink.mavlink_command_long_t
@@ -234,7 +267,7 @@ namespace csDronLink
                 target_component = 1,
                 command = (ushort)MAVLink.MAV_CMD.SET_MESSAGE_INTERVAL,
                 param1 = (float)MAVLink.MAVLINK_MSG_ID.GLOBAL_POSITION_INT, // ID del mensaje que queremos recibir
-                param2 = 200000, // Intervalo en microsegundos (1 Hz = 1,000,000 µs)
+                param2 =periodo, // Intervalo en microsegundos (1 Hz = 1,000,000 µs)
             };
 
             byte[] packet = mavlink.GenerateMAVLinkPacket10(MAVLink.MAVLINK_MSG_ID.COMMAND_LONG, req);
@@ -254,7 +287,7 @@ namespace csDronLink
                 target_component = 1,
                 command = (ushort)MAVLink.MAV_CMD.SET_MESSAGE_INTERVAL,
                 param1 = (float)MAVLink.MAVLINK_MSG_ID.LOCAL_POSITION_NED, // ID del mensaje que queremos recibir
-                param2 = 200000, // Intervalo en microsegundos (1 Hz = 1,000,000 µs)
+                param2 = periodo, // Intervalo en microsegundos (1 Hz = 1,000,000 µs)
             };
 
             packet = mavlink.GenerateMAVLinkPacket10(MAVLink.MAVLINK_MSG_ID.COMMAND_LONG, req);
@@ -275,12 +308,30 @@ namespace csDronLink
                 target_component = 1,
                 command = (ushort)MAVLink.MAV_CMD.SET_MESSAGE_INTERVAL,
                 param1 = (float)MAVLink.MAVLINK_MSG_ID.SYS_STATUS, // ID del mensaje que queremos recibir
-                param2 = 200000, // Intervalo en microsegundos (1 Hz = 1,000,000 µs)
+                param2 = periodo, // Intervalo en microsegundos (1 Hz = 1,000,000 µs)
             };
 
             packet = mavlink.GenerateMAVLinkPacket10(MAVLink.MAVLINK_MSG_ID.COMMAND_LONG, req);
             EnviarMensaje(packet);
 
+
+            // Esto es para obtener el angulo de pith y de roll del dron
+            msgType = ((int)MAVLink.MAVLINK_MSG_ID.ATTITUDE).ToString();
+            messageHandler.RegisterHandler(msgType, RegistrarAttitude);
+
+            // Ahora le pido al autopiloto que me envíe mensajes del tipo indicado (los que contienen
+            // los datos de telemetría, cada 2 segundos)
+            req = new MAVLink.mavlink_command_long_t
+            {
+                target_system = this.id,
+                target_component = 1,
+                command = (ushort)MAVLink.MAV_CMD.SET_MESSAGE_INTERVAL,
+                param1 = (float)MAVLink.MAVLINK_MSG_ID.ATTITUDE, // ID del mensaje que queremos recibir
+                param2 = periodo, // Intervalo en microsegundos (1 Hz = 1,000,000 µs)
+            };
+
+            packet = mavlink.GenerateMAVLinkPacket10(MAVLink.MAVLINK_MSG_ID.COMMAND_LONG, req);
+            EnviarMensaje(packet);
 
 
             Console.WriteLine("Enviado el mensaje de conexion");

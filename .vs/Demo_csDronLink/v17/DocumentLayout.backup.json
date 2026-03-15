@@ -3,19 +3,7 @@
   "WorkspaceRootPath": "C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B4943912-5FB7-4403-9F0C-489C59B15FC9}|csDronLink\\csDronLink.csproj|C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\csdronlink\\dron.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4943912-5FB7-4403-9F0C-489C59B15FC9}|csDronLink\\csDronLink.csproj|solutionrelative:csdronlink\\dron.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4943912-5FB7-4403-9F0C-489C59B15FC9}|csDronLink\\csDronLink.csproj|C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\csdronlink\\dron_telemetria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4943912-5FB7-4403-9F0C-489C59B15FC9}|csDronLink\\csDronLink.csproj|solutionrelative:csdronlink\\dron_telemetria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{31872EF7-C79D-4596-83E1-C77D95E55B55}|ConsolaTest\\ConsolaTest.csproj|C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\consolatest\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{31872EF7-C79D-4596-83E1-C77D95E55B55}|ConsolaTest\\ConsolaTest.csproj|solutionrelative:consolatest\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{92360E56-A293-436C-8A29-0D0C37AF50A4}|SimpleExample\\SimpleExample.csproj|c:\\users\\miguel\\documents\\miguel\\dee\\csdronlink\\prueba3\\csdronelink\\simpleexample\\simpleexample.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{92360E56-A293-436C-8A29-0D0C37AF50A4}|SimpleExample\\SimpleExample.csproj|C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\simpleexample\\simpleexample.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{92360E56-A293-436C-8A29-0D0C37AF50A4}|SimpleExample\\SimpleExample.csproj|solutionrelative:simpleexample\\simpleexample.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -25,6 +13,30 @@
     {
       "AbsoluteMoniker": "D:0:0:{B4943912-5FB7-4403-9F0C-489C59B15FC9}|csDronLink\\csDronLink.csproj|C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\csdronlink\\dron_movimiento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B4943912-5FB7-4403-9F0C-489C59B15FC9}|csDronLink\\csDronLink.csproj|solutionrelative:csdronlink\\dron_movimiento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4943912-5FB7-4403-9F0C-489C59B15FC9}|csDronLink\\csDronLink.csproj|C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\csdronlink\\dron.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4943912-5FB7-4403-9F0C-489C59B15FC9}|csDronLink\\csDronLink.csproj|solutionrelative:csdronlink\\dron.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4943912-5FB7-4403-9F0C-489C59B15FC9}|csDronLink\\csDronLink.csproj|C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\csdronlink\\messagehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4943912-5FB7-4403-9F0C-489C59B15FC9}|csDronLink\\csDronLink.csproj|solutionrelative:csdronlink\\messagehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{31872EF7-C79D-4596-83E1-C77D95E55B55}|ConsolaTest\\ConsolaTest.csproj|c:\\users\\miguel\\documents\\miguel\\dee\\csdronlink\\prueba3\\csdronelink\\consolatest\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{31872EF7-C79D-4596-83E1-C77D95E55B55}|ConsolaTest\\ConsolaTest.csproj|solutionrelative:consolatest\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4943912-5FB7-4403-9F0C-489C59B15FC9}|csDronLink\\csDronLink.csproj|C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\csdronlink\\dron_telemetria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4943912-5FB7-4403-9F0C-489C59B15FC9}|csDronLink\\csDronLink.csproj|solutionrelative:csdronlink\\dron_telemetria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4943912-5FB7-4403-9F0C-489C59B15FC9}|csDronLink\\csDronLink.csproj|C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\csdronlink\\dron_mision.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4943912-5FB7-4403-9F0C-489C59B15FC9}|csDronLink\\csDronLink.csproj|solutionrelative:csdronlink\\dron_mision.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4943912-5FB7-4403-9F0C-489C59B15FC9}|csDronLink\\csDronLink.csproj|C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\csdronlink\\dron_comprobadores.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4943912-5FB7-4403-9F0C-489C59B15FC9}|csDronLink\\csDronLink.csproj|solutionrelative:csdronlink\\dron_comprobadores.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B4943912-5FB7-4403-9F0C-489C59B15FC9}|csDronLink\\csDronLink.csproj|C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\csdronlink\\mijoystick.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -49,18 +61,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{B4943912-5FB7-4403-9F0C-489C59B15FC9}|csDronLink\\csDronLink.csproj|C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\csdronlink\\dron_despegue_aterrizaje_rtl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B4943912-5FB7-4403-9F0C-489C59B15FC9}|csDronLink\\csDronLink.csproj|solutionrelative:csdronlink\\dron_despegue_aterrizaje_rtl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4943912-5FB7-4403-9F0C-489C59B15FC9}|csDronLink\\csDronLink.csproj|C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\csdronlink\\messagehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4943912-5FB7-4403-9F0C-489C59B15FC9}|csDronLink\\csDronLink.csproj|solutionrelative:csdronlink\\messagehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4943912-5FB7-4403-9F0C-489C59B15FC9}|csDronLink\\csDronLink.csproj|C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\csdronlink\\dron_mision.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4943912-5FB7-4403-9F0C-489C59B15FC9}|csDronLink\\csDronLink.csproj|solutionrelative:csdronlink\\dron_mision.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4943912-5FB7-4403-9F0C-489C59B15FC9}|csDronLink\\csDronLink.csproj|C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\csdronlink\\dron_comprobadores.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4943912-5FB7-4403-9F0C-489C59B15FC9}|csDronLink\\csDronLink.csproj|solutionrelative:csdronlink\\dron_comprobadores.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B4943912-5FB7-4403-9F0C-489C59B15FC9}|csDronLink\\csDronLink.csproj|C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\csdronlink\\dron_miscelanea.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -141,11 +141,126 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "simpleexample.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\SimpleExample\\simpleexample.cs",
+              "RelativeDocumentMoniker": "SimpleExample\\simpleexample.cs",
+              "ToolTip": "C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\SimpleExample\\simpleexample.cs [Dise\u00F1o]*",
+              "RelativeToolTip": "SimpleExample\\simpleexample.cs [Dise\u00F1o]*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-08T10:52:08.166Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "simpleexample.cs",
+              "DocumentMoniker": "C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\SimpleExample\\simpleexample.cs",
+              "RelativeDocumentMoniker": "SimpleExample\\simpleexample.cs",
+              "ToolTip": "C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\SimpleExample\\simpleexample.cs*",
+              "RelativeToolTip": "SimpleExample\\simpleexample.cs*",
+              "ViewState": "AgIAACABAAAAAAAAAAAmwCYBAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-08T10:52:07.838Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 6,
+              "Title": "Dron_telemetria.cs",
+              "DocumentMoniker": "C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\csDronLink\\Dron_telemetria.cs",
+              "RelativeDocumentMoniker": "csDronLink\\Dron_telemetria.cs",
+              "ToolTip": "C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\csDronLink\\Dron_telemetria.cs",
+              "RelativeToolTip": "csDronLink\\Dron_telemetria.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAA3wCkAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-08T10:52:08.178Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Dron_mision.cs",
+              "DocumentMoniker": "C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\csDronLink\\Dron_mision.cs",
+              "RelativeDocumentMoniker": "csDronLink\\Dron_mision.cs",
+              "ToolTip": "C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\csDronLink\\Dron_mision.cs",
+              "RelativeToolTip": "csDronLink\\Dron_mision.cs",
+              "ViewState": "AgIAAHoAAAAAAAAAAAAcwJkAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-08T10:52:08.179Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Dron_comprobadores.cs",
+              "DocumentMoniker": "C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\csDronLink\\Dron_comprobadores.cs",
+              "RelativeDocumentMoniker": "csDronLink\\Dron_comprobadores.cs",
+              "ToolTip": "C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\csDronLink\\Dron_comprobadores.cs",
+              "RelativeToolTip": "csDronLink\\Dron_comprobadores.cs",
+              "ViewState": "AgIAADQAAAAAAAAAAAAkwEQAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-08T10:52:08.174Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MessageHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\csDronLink\\MessageHandler.cs",
+              "RelativeDocumentMoniker": "csDronLink\\MessageHandler.cs",
+              "ToolTip": "C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\csDronLink\\MessageHandler.cs",
+              "RelativeToolTip": "csDronLink\\MessageHandler.cs",
+              "ViewState": "AgIAAEMAAAAAAAAAAAAcwFAAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-08T10:52:08.175Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Dron_movimiento.cs",
+              "DocumentMoniker": "C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\csDronLink\\Dron_movimiento.cs",
+              "RelativeDocumentMoniker": "csDronLink\\Dron_movimiento.cs",
+              "ToolTip": "C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\csDronLink\\Dron_movimiento.cs",
+              "RelativeToolTip": "csDronLink\\Dron_movimiento.cs",
+              "ViewState": "AgIAAIsAAAAAAAAAAAAqwMEAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-08T10:52:08.18Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\ConsolaTest\\Program.cs",
+              "RelativeDocumentMoniker": "ConsolaTest\\Program.cs",
+              "ToolTip": "C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\ConsolaTest\\Program.cs",
+              "RelativeToolTip": "ConsolaTest\\Program.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAUwEYAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-05T15:17:52.822Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Dron.cs",
+              "DocumentMoniker": "C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\csDronLink\\Dron.cs",
+              "RelativeDocumentMoniker": "csDronLink\\Dron.cs",
+              "ToolTip": "C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\csDronLink\\Dron.cs",
+              "RelativeToolTip": "csDronLink\\Dron.cs",
+              "ViewState": "AgIAAJ4AAAAAAAAAAAAQwCIBAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-08T10:52:07.887Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "MiJoystick.cs",
               "DocumentMoniker": "C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\csDronLink\\MiJoystick.cs",
               "RelativeDocumentMoniker": "csDronLink\\MiJoystick.cs",
@@ -157,96 +272,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "MessageHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\csDronLink\\MessageHandler.cs",
-              "RelativeDocumentMoniker": "csDronLink\\MessageHandler.cs",
-              "ToolTip": "C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\csDronLink\\MessageHandler.cs",
-              "RelativeToolTip": "csDronLink\\MessageHandler.cs",
-              "ViewState": "AgIAAI4AAAAAAAAAAAAQwKQAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T10:52:08.175Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Dron.cs",
-              "DocumentMoniker": "C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\csDronLink\\Dron.cs",
-              "RelativeDocumentMoniker": "csDronLink\\Dron.cs",
-              "ToolTip": "C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\csDronLink\\Dron.cs",
-              "RelativeToolTip": "csDronLink\\Dron.cs",
-              "ViewState": "AgIAAGsAAAAAAAAAAAAgwCcAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T10:52:07.887Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\ConsolaTest\\Program.cs",
-              "RelativeDocumentMoniker": "ConsolaTest\\Program.cs",
-              "ToolTip": "C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\ConsolaTest\\Program.cs",
-              "RelativeToolTip": "ConsolaTest\\Program.cs",
-              "ViewState": "AgIAAGsBAAAAAAAAAAAAAH4BAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-05T15:17:52.822Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Dron_movimiento.cs",
-              "DocumentMoniker": "C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\csDronLink\\Dron_movimiento.cs",
-              "RelativeDocumentMoniker": "csDronLink\\Dron_movimiento.cs",
-              "ToolTip": "C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\csDronLink\\Dron_movimiento.cs",
-              "RelativeToolTip": "csDronLink\\Dron_movimiento.cs",
-              "ViewState": "AgIAANYAAAAAAAAAAAAuwMEAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T10:52:08.18Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "simpleexample.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\SimpleExample\\simpleexample.cs",
-              "RelativeDocumentMoniker": "SimpleExample\\simpleexample.cs",
-              "ToolTip": "C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\SimpleExample\\simpleexample.cs [Dise\u00F1o]",
-              "RelativeToolTip": "SimpleExample\\simpleexample.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T10:52:08.166Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "simpleexample.cs",
-              "DocumentMoniker": "C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\SimpleExample\\simpleexample.cs",
-              "RelativeDocumentMoniker": "SimpleExample\\simpleexample.cs",
-              "ToolTip": "C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\SimpleExample\\simpleexample.cs",
-              "RelativeToolTip": "SimpleExample\\simpleexample.cs",
-              "ViewState": "AgIAAAABAAAAAAAAAAA2wBABAAA0AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T10:52:07.838Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Dron_telemetria.cs",
-              "DocumentMoniker": "C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\csDronLink\\Dron_telemetria.cs",
-              "RelativeDocumentMoniker": "csDronLink\\Dron_telemetria.cs",
-              "ToolTip": "C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\csDronLink\\Dron_telemetria.cs",
-              "RelativeToolTip": "csDronLink\\Dron_telemetria.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAAwCkAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T10:52:08.178Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "Dron_RC.cs",
               "DocumentMoniker": "C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\csDronLink\\Dron_RC.cs",
               "RelativeDocumentMoniker": "csDronLink\\Dron_RC.cs",
@@ -258,7 +284,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "Dron_parametros.cs",
               "DocumentMoniker": "C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\csDronLink\\Dron_parametros.cs",
               "RelativeDocumentMoniker": "csDronLink\\Dron_parametros.cs",
@@ -270,7 +296,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 13,
               "Title": "MavlinkParse.cs",
               "DocumentMoniker": "C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\csDronLink\\MavlinkParse.cs",
               "RelativeDocumentMoniker": "csDronLink\\MavlinkParse.cs",
@@ -282,19 +308,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Dron_mision.cs",
-              "DocumentMoniker": "C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\csDronLink\\Dron_mision.cs",
-              "RelativeDocumentMoniker": "csDronLink\\Dron_mision.cs",
-              "ToolTip": "C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\csDronLink\\Dron_mision.cs*",
-              "RelativeToolTip": "csDronLink\\Dron_mision.cs*",
-              "ViewState": "AgIAAJQAAAAAAAAAAAAcwKYAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T10:52:08.179Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "Dron_escenario.cs",
               "DocumentMoniker": "C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\csDronLink\\Dron_escenario.cs",
               "RelativeDocumentMoniker": "csDronLink\\Dron_escenario.cs",
@@ -307,19 +321,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 14,
-              "Title": "Dron_comprobadores.cs",
-              "DocumentMoniker": "C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\csDronLink\\Dron_comprobadores.cs",
-              "RelativeDocumentMoniker": "csDronLink\\Dron_comprobadores.cs",
-              "ToolTip": "C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\csDronLink\\Dron_comprobadores.cs",
-              "RelativeToolTip": "csDronLink\\Dron_comprobadores.cs",
-              "ViewState": "AgIAADEAAAAAAAAAAAAkwEQAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T10:52:08.174Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
               "Title": "Dron_despegue_aterrizaje_RTL.cs",
               "DocumentMoniker": "C:\\Users\\Miguel\\Documents\\Miguel\\DEE\\csDronLink\\prueba3\\csDroneLink\\csDronLink\\Dron_despegue_aterrizaje_RTL.cs",
               "RelativeDocumentMoniker": "csDronLink\\Dron_despegue_aterrizaje_RTL.cs",
@@ -398,7 +399,8 @@
               "RelativeToolTip": "SimpleExample\\simpleexample.Designer.cs",
               "ViewState": "AgIAABYAAAAAAAAAAAAAABYAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T10:52:08.183Z"
+              "WhenOpened": "2025-05-08T10:52:08.183Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",

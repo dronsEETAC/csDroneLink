@@ -292,7 +292,7 @@ namespace SimpleExample
                 if (prodRadio.Checked)
                     dron.Conectar("produccion", CMB_comport.Text);
                 else
-                    dron.Conectar("simulacion");
+                    dron.Conectar("simulacion", freq:20);
 
                 but_connect.BackColor = Color.Green;
                 but_connect.ForeColor = Color.White;

@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -394,9 +395,9 @@ namespace ConsolaTest
         {
 
             Dron miDron = new Dron();
-            miDron.Conectar("simulacion");
+            miDron.Conectar("simulacion", freq:20);
     
-            //miDron.Conectar("produccion", "com3");
+            //miDron.Conectar("produccion", "com29");
             Console.WriteLine("Conectado");
 
             //Thread.Sleep(5000);
