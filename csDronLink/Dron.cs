@@ -258,7 +258,7 @@ namespace csDronLink
             msgType = ((int)MAVLink.MAVLINK_MSG_ID.GLOBAL_POSITION_INT).ToString();
             messageHandler.RegisterHandler(msgType, RegistrarTelemetria);
 
-            int periodo = (1 / this.freq) * 1000000;
+            int periodo = (1000000 / this.freq);
             // Ahora le pido al autopiloto que me envíe mensajes del tipo indicado (los que contienen
             // los datos de telemetría, cada 2 segundos)
             MAVLink.mavlink_command_long_t req = new MAVLink.mavlink_command_long_t

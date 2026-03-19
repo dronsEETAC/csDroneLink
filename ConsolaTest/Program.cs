@@ -399,6 +399,7 @@ namespace ConsolaTest
     
             //miDron.Conectar("produccion", "com29");
             Console.WriteLine("Conectado");
+            
 
             //Thread.Sleep(5000);
             //miDron.Reboot();
